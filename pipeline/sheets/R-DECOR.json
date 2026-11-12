@@ -1,0 +1,144 @@
+{
+ "id": "R-DECOR",
+ "size": [
+  1536,
+  1024
+ ],
+ "kind": "things",
+ "what": "small piece of cha chaan teng decor",
+ "camera": "flat",
+ "scale": "Floor items in the 2:1 isometric view of the board's stool and bench. ",
+ "board": [
+  [
+   "F-FURN",
+   "clock"
+  ],
+  [
+   "F-FURN",
+   "tv"
+  ],
+  [
+   "F-FURN",
+   "sign"
+  ],
+  [
+   "I-FURN",
+   "stool"
+  ],
+  [
+   "I-FURN",
+   "bench_front"
+  ],
+  [
+   "B1-DEPT",
+   "pass"
+  ]
+ ],
+ "items": [
+  {
+   "name": "jar_shelf",
+   "zh": "牆架連樽罐",
+   "look": "a short wooden wall shelf with glass jars of dried goods and sauce bottles on it, seen straight on, flat against the wall (a front view, no perspective), like a picture hung on a wall",
+   "cell": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "grid": [
+    384,
+    512
+   ]
+  },
+  {
+   "name": "ticket_rail",
+   "zh": "單據夾",
+   "look": "an order-ticket rail: a steel strip with plain paper slips clipped along it (blank slips, no writing), seen straight on, flat against the wall (a front view, no perspective), like a picture hung on a wall",
+   "cell": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "grid": [
+    384,
+    512
+   ]
+  },
+  {
+   "name": "wall_fan",
+   "zh": "牆身抽氣扇",
+   "look": "a square wall extractor fan in a grimy white plastic frame, blades behind a grille, seen straight on, flat against the wall (a front view, no perspective), like a picture hung on a wall",
+   "cell": [
+    2,
+    0,
+    2,
+    0
+   ],
+   "grid": [
+    384,
+    512
+   ]
+  },
+  {
+   "name": "utensil_rail",
+   "zh": "掛湯殼鑊鏟的鐵棍",
+   "look": "a steel rail with S-hooks holding a wok ladle, a wok spatula, a strainer and a slotted spoon, hanging straight down, seen straight on, flat against the wall (a front view, no perspective), like a picture hung on a wall",
+   "cell": [
+    3,
+    0,
+    3,
+    0
+   ],
+   "grid": [
+    384,
+    512
+   ]
+  },
+  {
+   "name": "mop_bucket",
+   "zh": "地拖水桶",
+   "look": "a yellow mop bucket on castors with a wringer and a wooden-handled mop standing in it, on the floor, in the 2:1 isometric view",
+   "cell": [
+    0,
+    1,
+    0,
+    1
+   ],
+   "grid": [
+    384,
+    512
+   ]
+  },
+  {
+   "name": "crates",
+   "zh": "膠箱一疊",
+   "look": "a stack of three red plastic produce crates, the top one holding a few cabbages, on the floor, in the 2:1 isometric view, long sides facing down-left",
+   "cell": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "grid": [
+    384,
+    512
+   ]
+  },
+  {
+   "name": "calendar",
+   "zh": "月曆",
+   "look": "a hanging Chinese wall calendar: a red-and-gold header picture of a peony, plain pale pages with no writing, seen straight on, flat against the wall (a front view, no perspective), like a picture hung on a wall",
+   "cell": [
+    2,
+    1,
+    2,
+    1
+   ],
+   "grid": [
+    384,
+    512
+   ]
+  }
+ ]
+}

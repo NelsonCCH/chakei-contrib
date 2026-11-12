@@ -1,0 +1,29 @@
+{
+  // Strict TypeScript. Type-check only: scripts/build.mjs emits the JS.
+  // Every src/*.ts is an ES module; scripts/build.mjs bundles them from src/entry.ts (test build:
+  // src/entry-test.ts) into one site/js/app.js.
+  "compilerOptions": {
+    "target": "es2022",
+    // es2022, not later: newer built-ins (e.g. Array.prototype.findLast) are missing on iOS 15, the oldest Safari the game supports.
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    // esbuild compiles each file on its own: type-only imports must say so.
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "types": [],
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts"],
+  // The service worker is its own program (tsconfig.sw.json), as is the Worker in worker/ (tsconfig.worker.json).
+  "exclude": ["src/sw"]
+}

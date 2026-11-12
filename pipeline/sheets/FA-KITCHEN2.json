@@ -1,0 +1,84 @@
+{
+ "id": "FA-KITCHEN2",
+ "size": [
+  1536,
+  1024
+ ],
+ "kind": "things",
+ "what": "piece of cha chaan teng kitchen equipment",
+ "camera": "iso",
+ "scale": "One scale for all, the same as the board's counters (the prep counter there is about 1.5 m long and waist-high). ",
+ "board": [
+  [
+   "R-KITCHEN",
+   "wok_range"
+  ],
+  [
+   "R-KITCHEN",
+   "prep_counter"
+  ],
+  [
+   "R-KITCHEN",
+   "stock_pot"
+  ],
+  [
+   "FOOD-N",
+   "dish_5"
+  ],
+  [
+   "R-BAR-TA",
+   "urns"
+  ],
+  [
+   "I-COUNTER",
+   "counter"
+  ]
+ ],
+ "items": [
+  {
+   "name": "noodle_boiler",
+   "zh": "粉麵爐",
+   "look": "a stainless steel Cantonese noodle boiler about 1.2 m long and waist-high: a deep tank of steaming water with three wire noodle baskets on long handles hanging in it, a ladle resting on the edge; its long front faces down-left",
+   "cell": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  },
+  {
+   "name": "griddle",
+   "zh": "平底鐵板爐",
+   "look": "a stainless steel flat-top griddle about 1.2 m long and waist-high, two eggs frying and a slice of golden French toast on its plate, a steel spatula beside them; its long front faces down-left",
+   "cell": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  },
+  {
+   "name": "toaster",
+   "zh": "商用多士爐",
+   "look": "a commercial conveyor toaster (a steel box with a wide slot and a slice of bread going in) on a short steel stand; its front faces down-left",
+   "cell": [
+    2,
+    0,
+    2,
+    0
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  }
+ ]
+}

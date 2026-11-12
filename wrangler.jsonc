@@ -1,0 +1,49 @@
+{
+  // One Worker serves the game (site/) and its backend (worker/index.js, built from worker/index.ts by npm run build).
+  // Fill in the placeholders for your own Cloudflare account: see docs/ARCHITECTURE.md "Deploy".
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chakei",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-01",
+  // Optional: your account id (else wrangler uses the account you are logged in to).
+  // "account_id": "<your-cloudflare-account-id>",
+  // Optional: a custom domain instead of chakei.<your-subdomain>.workers.dev.
+  // "routes": [{ "pattern": "game.example.com", "custom_domain": true }],
+
+  "assets": {
+    "directory": "./site",
+    "binding": "ASSETS",
+    // /api/* must reach the Worker, never the static files.
+    "run_worker_first": ["/api/*"]
+  },
+
+  // One Durable Object per co-op room (relay + seats + referee + host hand-over).
+  "durable_objects": {
+    "bindings": [{ "name": "ROOMS", "class_name": "Room" }]
+  },
+  // SQLite-backed: the kind the free plan allows.
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Room"] }],
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "chakei",
+      // Replace with the id `npx wrangler d1 create chakei` prints. Local development (npm run db:local, the tests) works
+      // with the placeholder.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  "vars": {
+    // The OAuth Web Client ID of your Google Cloud project (not a secret), e.g. "1234-abc.apps.googleusercontent.com".
+    // Empty: no Google sign-in button; everyone plays as a guest with the save on the device.
+    "GOOGLE_CLIENT_ID": "",
+    // "1" turns on a fake "test login" for staging. Keep "0" in production.
+    "DEV_AUTH": "0",
+    // Anonymous usage counters into D1.
+    "STATS": "1"
+    // PLAYTEST: "1" shows the 試玩 pace panel and accepts the playtest timing log. For a preview Worker only.
+  }
+  // SESSION_SECRET is a secret: `npx wrangler secret put SESSION_SECRET` (and .dev.vars locally: see .dev.vars.example).
+}

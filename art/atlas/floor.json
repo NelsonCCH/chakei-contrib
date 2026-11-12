@@ -1,0 +1,2021 @@
+{
+ "version": 1,
+ "tile_px": 64,
+ "scene_px_per_atlas_px": 2.0,
+ "pages": [
+  "floor_0.png"
+ ],
+ "parts": {
+  "bag_pile": {
+   "page": 0,
+   "x": 650,
+   "y": 1408,
+   "w": 128,
+   "h": 102,
+   "kind": "loose",
+   "anchor": [
+    63.8,
+    100.5
+   ],
+   "mirror": true,
+   "shadow": 0.25
+  },
+  "bar": {
+   "page": 0,
+   "x": 1325,
+   "y": 646,
+   "w": 174,
+   "h": 268,
+   "kind": "furniture",
+   "anchor": [
+    87.0,
+    224.5
+   ],
+   "mirror": true,
+   "shadow": 0.32,
+   "foot": [
+    2.5,
+    0.211
+   ]
+  },
+  "bar_back": {
+   "page": 0,
+   "x": 1752,
+   "y": 930,
+   "w": 121,
+   "h": 220,
+   "kind": "equipment",
+   "anchor": [
+    60.4,
+    189.0
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    1.7,
+    0.187
+   ]
+  },
+  "barman_q_back": {
+   "page": 0,
+   "x": 1809,
+   "y": 2,
+   "w": 94,
+   "h": 288,
+   "kind": "person",
+   "anchor": [
+    46.5,
+    286.5
+   ],
+   "mirror": true,
+   "hips": 152.7,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "staff",
+   "look": "barman",
+   "shadow": 0.35
+  },
+  "barman_q_front": {
+   "page": 0,
+   "x": 1907,
+   "y": 2,
+   "w": 98,
+   "h": 288,
+   "kind": "person",
+   "anchor": [
+    48.8,
+    286.5
+   ],
+   "mirror": true,
+   "hips": 152.7,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "staff",
+   "look": "barman",
+   "shadow": 0.35
+  },
+  "barman_side": {
+   "page": 0,
+   "x": 2,
+   "y": 354,
+   "w": 66,
+   "h": 288,
+   "kind": "person",
+   "anchor": [
+    32.5,
+    286.5
+   ],
+   "mirror": true,
+   "hips": 152.7,
+   "head": 0.5,
+   "faces": "left",
+   "role": "staff",
+   "look": "barman",
+   "shadow": 0.35
+  },
+  "bench_back": {
+   "page": 0,
+   "x": 2,
+   "y": 1198,
+   "w": 234,
+   "h": 206,
+   "kind": "furniture",
+   "anchor": [
+    117.2,
+    146.9
+   ],
+   "mirror": true,
+   "shadow": 0.32,
+   "foot": [
+    2.524,
+    1.121
+   ]
+  },
+  "bench_front": {
+   "page": 0,
+   "x": 990,
+   "y": 930,
+   "w": 235,
+   "h": 228,
+   "kind": "furniture",
+   "anchor": [
+    117.5,
+    168.0
+   ],
+   "mirror": true,
+   "shadow": 0.32,
+   "foot": [
+    2.524,
+    1.124
+   ]
+  },
+  "booth_table": {
+   "page": 0,
+   "x": 622,
+   "y": 1198,
+   "w": 250,
+   "h": 190,
+   "kind": "table",
+   "anchor": [
+    124.2,
+    168.8
+   ],
+   "mirror": true,
+   "shadow": 0.22,
+   "foot": [
+    2.398,
+    1.4
+   ],
+   "top_h": 97.3
+  },
+  "bus_trolley": {
+   "page": 0,
+   "x": 1799,
+   "y": 1198,
+   "w": 126,
+   "h": 134,
+   "kind": "furniture",
+   "anchor": [
+    63.2,
+    101.4
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    1.25,
+    0.71
+   ]
+  },
+  "cake_case": {
+   "page": 0,
+   "x": 1877,
+   "y": 930,
+   "w": 112,
+   "h": 213,
+   "kind": "furniture",
+   "anchor": [
+    55.9,
+    184.8
+   ],
+   "mirror": true,
+   "shadow": 0.3,
+   "foot": [
+    0.345,
+    1.4
+   ]
+  },
+  "calendar": {
+   "page": 0,
+   "x": 282,
+   "y": 1408,
+   "w": 49,
+   "h": 123,
+   "kind": "wall",
+   "anchor": [
+    24.5,
+    61.5
+   ],
+   "mirror": true,
+   "shadow": 0.0,
+   "wall": "R"
+  },
+  "cashier_q_back": {
+   "page": 0,
+   "x": 940,
+   "y": 354,
+   "w": 80,
+   "h": 282,
+   "kind": "person",
+   "anchor": [
+    39.5,
+    281.0
+   ],
+   "mirror": true,
+   "hips": 149.7,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "staff",
+   "look": "cashier",
+   "shadow": 0.35
+  },
+  "cashier_q_front": {
+   "page": 0,
+   "x": 1024,
+   "y": 354,
+   "w": 84,
+   "h": 282,
+   "kind": "person",
+   "anchor": [
+    41.5,
+    281.0
+   ],
+   "mirror": true,
+   "hips": 149.7,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "staff",
+   "look": "cashier",
+   "shadow": 0.35
+  },
+  "cashier_side": {
+   "page": 0,
+   "x": 1112,
+   "y": 354,
+   "w": 68,
+   "h": 282,
+   "kind": "person",
+   "anchor": [
+    33.8,
+    281.0
+   ],
+   "mirror": true,
+   "hips": 149.7,
+   "head": 1.0,
+   "faces": "left",
+   "role": "staff",
+   "look": "cashier",
+   "shadow": 0.35
+  },
+  "chop_table": {
+   "page": 0,
+   "x": 538,
+   "y": 930,
+   "w": 300,
+   "h": 238,
+   "kind": "equipment",
+   "anchor": [
+    149.3,
+    161.3
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    3.3,
+    1.359
+   ]
+  },
+  "counter": {
+   "page": 0,
+   "x": 2,
+   "y": 646,
+   "w": 242,
+   "h": 280,
+   "kind": "furniture",
+   "anchor": [
+    120.6,
+    219.5
+   ],
+   "mirror": true,
+   "shadow": 0.3,
+   "foot": [
+    0.374,
+    3.4
+   ]
+  },
+  "crate_stack": {
+   "page": 0,
+   "x": 782,
+   "y": 1408,
+   "w": 94,
+   "h": 92,
+   "kind": "furniture",
+   "anchor": [
+    46.8,
+    67.2
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    0.85,
+    0.609
+   ]
+  },
+  "crates": {
+   "page": 0,
+   "x": 437,
+   "y": 1408,
+   "w": 96,
+   "h": 116,
+   "kind": "loose",
+   "anchor": [
+    47.8,
+    114.5
+   ],
+   "mirror": true,
+   "shadow": 0.25
+  },
+  "cups": {
+   "page": 0,
+   "x": 1025,
+   "y": 1408,
+   "w": 122,
+   "h": 80,
+   "kind": "loose",
+   "anchor": [
+    60.8,
+    78.5
+   ],
+   "mirror": true,
+   "shadow": 0.0
+  },
+  "dish_0": {
+   "page": 0,
+   "x": 1339,
+   "y": 1408,
+   "w": 44,
+   "h": 36,
+   "kind": "dish",
+   "anchor": [
+    22.0,
+    28.8
+   ],
+   "mirror": true,
+   "name": "叉燒湯米",
+   "category": "bowl",
+   "radius_tiles": 0.4887,
+   "shadow": 0.33
+  },
+  "dish_1": {
+   "page": 0,
+   "x": 1771,
+   "y": 1408,
+   "w": 36,
+   "h": 26,
+   "kind": "dish",
+   "anchor": [
+    18.0,
+    14.6
+   ],
+   "mirror": true,
+   "name": "白多士",
+   "category": "toast",
+   "radius_tiles": 0.4025,
+   "shadow": 0.33
+  },
+  "dish_10": {
+   "page": 0,
+   "x": 1435,
+   "y": 1408,
+   "w": 52,
+   "h": 34,
+   "kind": "dish",
+   "anchor": [
+    25.8,
+    22.1
+   ],
+   "mirror": true,
+   "name": "焗豬扒飯",
+   "category": "main",
+   "radius_tiles": 0.575,
+   "shadow": 0.33
+  },
+  "dish_11": {
+   "page": 0,
+   "x": 1691,
+   "y": 1408,
+   "w": 36,
+   "h": 28,
+   "kind": "dish",
+   "anchor": [
+    18.2,
+    17.3
+   ],
+   "mirror": true,
+   "name": "菠蘿油",
+   "category": "toast",
+   "radius_tiles": 0.4025,
+   "shadow": 0.33
+  },
+  "dish_12": {
+   "page": 0,
+   "x": 1387,
+   "y": 1408,
+   "w": 44,
+   "h": 36,
+   "kind": "dish",
+   "anchor": [
+    21.8,
+    29.8
+   ],
+   "mirror": true,
+   "name": "火腿通粉",
+   "category": "bowl",
+   "radius_tiles": 0.4887,
+   "shadow": 0.33
+  },
+  "dish_13": {
+   "page": 0,
+   "x": 1731,
+   "y": 1408,
+   "w": 36,
+   "h": 27,
+   "kind": "dish",
+   "anchor": [
+    18.0,
+    14.5
+   ],
+   "mirror": true,
+   "name": "西多士",
+   "category": "toast",
+   "radius_tiles": 0.4025,
+   "shadow": 0.33
+  },
+  "dish_14": {
+   "page": 0,
+   "x": 1882,
+   "y": 1408,
+   "w": 27,
+   "h": 22,
+   "kind": "dish",
+   "anchor": [
+    13.2,
+    13.4
+   ],
+   "mirror": true,
+   "name": "熱檸茶",
+   "category": "cup",
+   "radius_tiles": 0.299,
+   "shadow": 0.33
+  },
+  "dish_15": {
+   "page": 0,
+   "x": 1491,
+   "y": 1408,
+   "w": 52,
+   "h": 34,
+   "kind": "dish",
+   "anchor": [
+    26.0,
+    17.4
+   ],
+   "mirror": true,
+   "name": "食剩碟",
+   "category": "main",
+   "radius_tiles": 0.575,
+   "shadow": 0.33
+  },
+  "dish_16": {
+   "page": 0,
+   "x": 1913,
+   "y": 1408,
+   "w": 27,
+   "h": 22,
+   "kind": "dish",
+   "anchor": [
+    13.2,
+    13.6
+   ],
+   "mirror": true,
+   "name": "飲剩杯",
+   "category": "cup",
+   "radius_tiles": 0.299,
+   "shadow": 0.33
+  },
+  "dish_17": {
+   "page": 0,
+   "x": 1547,
+   "y": 1408,
+   "w": 44,
+   "h": 34,
+   "kind": "dish",
+   "anchor": [
+    22.0,
+    27.3
+   ],
+   "mirror": true,
+   "name": "食剩碗",
+   "category": "bowl",
+   "radius_tiles": 0.4887,
+   "shadow": 0.33
+  },
+  "dish_2": {
+   "page": 0,
+   "x": 1595,
+   "y": 1408,
+   "w": 52,
+   "h": 34,
+   "kind": "dish",
+   "anchor": [
+    25.5,
+    17.4
+   ],
+   "mirror": true,
+   "name": "星洲炒米",
+   "category": "main",
+   "radius_tiles": 0.575,
+   "shadow": 0.33
+  },
+  "dish_3": {
+   "page": 0,
+   "x": 1651,
+   "y": 1408,
+   "w": 36,
+   "h": 32,
+   "kind": "dish",
+   "anchor": [
+    18.0,
+    25.8
+   ],
+   "mirror": true,
+   "name": "燉奶",
+   "category": "dessert",
+   "radius_tiles": 0.4025,
+   "shadow": 0.33
+  },
+  "dish_4": {
+   "page": 0,
+   "x": 1811,
+   "y": 1408,
+   "w": 36,
+   "h": 26,
+   "kind": "dish",
+   "anchor": [
+    17.8,
+    14.6
+   ],
+   "mirror": true,
+   "name": "火腿三文治",
+   "category": "sandwich",
+   "radius_tiles": 0.4025,
+   "shadow": 0.33
+  },
+  "dish_5": {
+   "page": 0,
+   "x": 1851,
+   "y": 1408,
+   "w": 27,
+   "h": 24,
+   "kind": "dish",
+   "anchor": [
+    13.2,
+    15.9
+   ],
+   "mirror": true,
+   "name": "熱奶茶",
+   "category": "cup",
+   "radius_tiles": 0.299,
+   "shadow": 0.33
+  },
+  "dish_6": {
+   "page": 0,
+   "x": 1151,
+   "y": 1408,
+   "w": 27,
+   "h": 50,
+   "kind": "dish",
+   "anchor": [
+    13.2,
+    47.1
+   ],
+   "mirror": true,
+   "name": "凍檸茶",
+   "category": "glass",
+   "radius_tiles": 0.299,
+   "shadow": 0.33
+  },
+  "dish_7": {
+   "page": 0,
+   "x": 1944,
+   "y": 1408,
+   "w": 27,
+   "h": 22,
+   "kind": "dish",
+   "anchor": [
+    13.2,
+    13.9
+   ],
+   "mirror": true,
+   "name": "鴛鴦",
+   "category": "cup",
+   "radius_tiles": 0.299,
+   "shadow": 0.33
+  },
+  "dish_8": {
+   "page": 0,
+   "x": 1182,
+   "y": 1408,
+   "w": 27,
+   "h": 50,
+   "kind": "dish",
+   "anchor": [
+    13.2,
+    47.1
+   ],
+   "mirror": true,
+   "name": "凍奶茶",
+   "category": "glass",
+   "radius_tiles": 0.299,
+   "shadow": 0.33
+  },
+  "dish_9": {
+   "page": 0,
+   "x": 1291,
+   "y": 1408,
+   "w": 44,
+   "h": 38,
+   "kind": "dish",
+   "anchor": [
+    21.5,
+    31.3
+   ],
+   "mirror": true,
+   "name": "餐蛋麵",
+   "category": "bowl",
+   "radius_tiles": 0.4887,
+   "shadow": 0.33
+  },
+  "dish_rack": {
+   "page": 0,
+   "x": 240,
+   "y": 1198,
+   "w": 142,
+   "h": 202,
+   "kind": "equipment",
+   "anchor": [
+    71.2,
+    165.7
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    1.6,
+    0.607
+   ]
+  },
+  "dishwasher_q_back": {
+   "page": 0,
+   "x": 248,
+   "y": 646,
+   "w": 80,
+   "h": 280,
+   "kind": "person",
+   "anchor": [
+    40.0,
+    278.0
+   ],
+   "mirror": true,
+   "hips": 148.2,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "staff",
+   "look": "dishwasher",
+   "shadow": 0.35
+  },
+  "dishwasher_q_front": {
+   "page": 0,
+   "x": 332,
+   "y": 646,
+   "w": 84,
+   "h": 280,
+   "kind": "person",
+   "anchor": [
+    41.5,
+    278.0
+   ],
+   "mirror": true,
+   "hips": 148.2,
+   "head": 1.5,
+   "faces": "+v",
+   "role": "staff",
+   "look": "dishwasher",
+   "shadow": 0.35
+  },
+  "dishwasher_side": {
+   "page": 0,
+   "x": 420,
+   "y": 646,
+   "w": 66,
+   "h": 280,
+   "kind": "person",
+   "anchor": [
+    33.0,
+    278.0
+   ],
+   "mirror": true,
+   "hips": 148.2,
+   "head": 1.5,
+   "faces": "left",
+   "role": "staff",
+   "look": "dishwasher",
+   "shadow": 0.35
+  },
+  "fridge": {
+   "page": 0,
+   "x": 258,
+   "y": 2,
+   "w": 150,
+   "h": 298,
+   "kind": "equipment",
+   "anchor": [
+    75.0,
+    259.2
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    1.5,
+    0.815
+   ]
+  },
+  "granny_q_back": {
+   "page": 0,
+   "x": 1820,
+   "y": 646,
+   "w": 98,
+   "h": 264,
+   "kind": "person",
+   "anchor": [
+    48.5,
+    263.0
+   ],
+   "mirror": true,
+   "hips": 140.2,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "customer",
+   "look": "granny",
+   "shadow": 0.35
+  },
+  "granny_q_front": {
+   "page": 0,
+   "x": 1922,
+   "y": 646,
+   "w": 100,
+   "h": 264,
+   "kind": "person",
+   "anchor": [
+    49.8,
+    263.0
+   ],
+   "mirror": true,
+   "hips": 140.2,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "customer",
+   "look": "granny",
+   "shadow": 0.35
+  },
+  "granny_side": {
+   "page": 0,
+   "x": 2,
+   "y": 930,
+   "w": 77,
+   "h": 264,
+   "kind": "person",
+   "anchor": [
+    38.2,
+    263.0
+   ],
+   "mirror": true,
+   "hips": 140.2,
+   "head": 1.0,
+   "faces": "left",
+   "role": "customer",
+   "look": "granny",
+   "shadow": 0.35
+  },
+  "griddle": {
+   "page": 0,
+   "x": 1292,
+   "y": 1198,
+   "w": 219,
+   "h": 171,
+   "kind": "equipment",
+   "anchor": [
+    109.1,
+    115.3
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    2.4,
+    1.003
+   ]
+  },
+  "hood": {
+   "page": 0,
+   "x": 1503,
+   "y": 646,
+   "w": 313,
+   "h": 266,
+   "kind": "hung",
+   "anchor": [
+    156.2,
+    265.0
+   ],
+   "mirror": true,
+   "shadow": 0.0,
+   "foot": [
+    4.6,
+    0.266
+   ],
+   "wall": "R"
+  },
+  "housewife2_q_back": {
+   "page": 0,
+   "x": 1184,
+   "y": 354,
+   "w": 94,
+   "h": 282,
+   "kind": "person",
+   "anchor": [
+    46.5,
+    281.0
+   ],
+   "mirror": true,
+   "hips": 149.7,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "customer",
+   "look": "housewife2",
+   "shadow": 0.35
+  },
+  "housewife2_q_front": {
+   "page": 0,
+   "x": 1282,
+   "y": 354,
+   "w": 94,
+   "h": 282,
+   "kind": "person",
+   "anchor": [
+    46.8,
+    281.0
+   ],
+   "mirror": true,
+   "hips": 149.7,
+   "head": 0.5,
+   "faces": "+v",
+   "role": "customer",
+   "look": "housewife2",
+   "shadow": 0.35
+  },
+  "housewife2_side": {
+   "page": 0,
+   "x": 1380,
+   "y": 354,
+   "w": 74,
+   "h": 282,
+   "kind": "person",
+   "anchor": [
+    36.8,
+    281.0
+   ],
+   "mirror": true,
+   "hips": 149.7,
+   "head": 1.0,
+   "faces": "left",
+   "role": "customer",
+   "look": "housewife2",
+   "shadow": 0.35
+  },
+  "housewife_q_back": {
+   "page": 0,
+   "x": 72,
+   "y": 354,
+   "w": 127,
+   "h": 285,
+   "kind": "person",
+   "anchor": [
+    63.2,
+    283.5
+   ],
+   "mirror": true,
+   "hips": 151.1,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "customer",
+   "look": "housewife",
+   "shadow": 0.35
+  },
+  "housewife_q_front": {
+   "page": 0,
+   "x": 203,
+   "y": 354,
+   "w": 127,
+   "h": 285,
+   "kind": "person",
+   "anchor": [
+    63.2,
+    283.5
+   ],
+   "mirror": true,
+   "hips": 151.1,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "customer",
+   "look": "housewife",
+   "shadow": 0.35
+  },
+  "housewife_side": {
+   "page": 0,
+   "x": 334,
+   "y": 354,
+   "w": 78,
+   "h": 285,
+   "kind": "person",
+   "anchor": [
+    39.0,
+    283.5
+   ],
+   "mirror": true,
+   "hips": 151.1,
+   "head": 1.0,
+   "faces": "left",
+   "role": "customer",
+   "look": "housewife",
+   "shadow": 0.35
+  },
+  "jar_shelf": {
+   "page": 0,
+   "x": 1929,
+   "y": 1198,
+   "w": 103,
+   "h": 132,
+   "kind": "wall",
+   "anchor": [
+    51.5,
+    66.2
+   ],
+   "mirror": true,
+   "shadow": 0.0,
+   "wall": "R"
+  },
+  "meat_rail": {
+   "page": 0,
+   "x": 876,
+   "y": 1198,
+   "w": 195,
+   "h": 177,
+   "kind": "wall",
+   "anchor": [
+    97.5,
+    88.5
+   ],
+   "mirror": true,
+   "shadow": 0.0,
+   "wall": "R"
+  },
+  "meat_tray": {
+   "page": 0,
+   "x": 1213,
+   "y": 1408,
+   "w": 74,
+   "h": 42,
+   "kind": "loose",
+   "anchor": [
+    36.5,
+    40.5
+   ],
+   "mirror": true,
+   "shadow": 0.0
+  },
+  "mop_bucket": {
+   "page": 0,
+   "x": 2,
+   "y": 1408,
+   "w": 83,
+   "h": 129,
+   "kind": "loose",
+   "anchor": [
+    41.2,
+    127.5
+   ],
+   "mirror": true,
+   "shadow": 0.25
+  },
+  "noodle_boiler": {
+   "page": 0,
+   "x": 1075,
+   "y": 1198,
+   "w": 213,
+   "h": 174,
+   "kind": "equipment",
+   "anchor": [
+    106.5,
+    119.9
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    2.4,
+    0.911
+   ]
+  },
+  "office_lady_q_back": {
+   "page": 0,
+   "x": 416,
+   "y": 354,
+   "w": 78,
+   "h": 285,
+   "kind": "person",
+   "anchor": [
+    38.8,
+    283.5
+   ],
+   "mirror": true,
+   "hips": 151.1,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "customer",
+   "look": "office_lady",
+   "shadow": 0.35
+  },
+  "office_lady_q_front": {
+   "page": 0,
+   "x": 498,
+   "y": 354,
+   "w": 82,
+   "h": 285,
+   "kind": "person",
+   "anchor": [
+    40.8,
+    283.5
+   ],
+   "mirror": true,
+   "hips": 151.1,
+   "head": 0.5,
+   "faces": "+v",
+   "role": "customer",
+   "look": "office_lady",
+   "shadow": 0.35
+  },
+  "office_lady_side": {
+   "page": 0,
+   "x": 584,
+   "y": 354,
+   "w": 66,
+   "h": 285,
+   "kind": "person",
+   "anchor": [
+    32.5,
+    283.5
+   ],
+   "mirror": true,
+   "hips": 151.1,
+   "head": 1.0,
+   "faces": "right",
+   "role": "customer",
+   "look": "office_lady",
+   "shadow": 0.35
+  },
+  "office_man_q_back": {
+   "page": 0,
+   "x": 412,
+   "y": 2,
+   "w": 84,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    41.5,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "customer",
+   "look": "office_man",
+   "shadow": 0.35
+  },
+  "office_man_q_front": {
+   "page": 0,
+   "x": 500,
+   "y": 2,
+   "w": 86,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    42.2,
+    293.0
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "customer",
+   "look": "office_man",
+   "shadow": 0.35
+  },
+  "office_man_side": {
+   "page": 0,
+   "x": 590,
+   "y": 2,
+   "w": 60,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    29.8,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 0.5,
+   "faces": "right",
+   "role": "customer",
+   "look": "office_man",
+   "shadow": 0.35
+  },
+  "pass": {
+   "page": 0,
+   "x": 1515,
+   "y": 1198,
+   "w": 182,
+   "h": 161,
+   "kind": "equipment",
+   "anchor": [
+    90.9,
+    114.4
+   ],
+   "mirror": true,
+   "shadow": 0.2,
+   "foot": [
+    2.2,
+    0.635
+   ]
+  },
+  "prep_counter": {
+   "page": 0,
+   "x": 1229,
+   "y": 930,
+   "w": 260,
+   "h": 228,
+   "kind": "equipment",
+   "anchor": [
+    129.3,
+    163.0
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    1.028,
+    3.0
+   ]
+  },
+  "roast_case": {
+   "page": 0,
+   "x": 2,
+   "y": 2,
+   "w": 252,
+   "h": 348,
+   "kind": "equipment",
+   "anchor": [
+    125.5,
+    283.8
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    3.3,
+    0.613
+   ]
+  },
+  "roast_cook_q_back": {
+   "page": 0,
+   "x": 654,
+   "y": 354,
+   "w": 98,
+   "h": 285,
+   "kind": "person",
+   "anchor": [
+    48.8,
+    283.0
+   ],
+   "mirror": true,
+   "hips": 151.1,
+   "head": 1.5,
+   "faces": "-u",
+   "role": "staff",
+   "look": "roast_cook",
+   "shadow": 0.35
+  },
+  "roast_cook_q_front": {
+   "page": 0,
+   "x": 756,
+   "y": 354,
+   "w": 102,
+   "h": 285,
+   "kind": "person",
+   "anchor": [
+    50.8,
+    283.0
+   ],
+   "mirror": true,
+   "hips": 151.1,
+   "head": 1.5,
+   "faces": "+v",
+   "role": "staff",
+   "look": "roast_cook",
+   "shadow": 0.35
+  },
+  "roast_cook_side": {
+   "page": 0,
+   "x": 862,
+   "y": 354,
+   "w": 74,
+   "h": 285,
+   "kind": "person",
+   "anchor": [
+    36.5,
+    283.0
+   ],
+   "mirror": true,
+   "hips": 151.1,
+   "head": 1.5,
+   "faces": "right",
+   "role": "staff",
+   "look": "roast_cook",
+   "shadow": 0.35
+  },
+  "roast_counter": {
+   "page": 0,
+   "x": 1493,
+   "y": 930,
+   "w": 255,
+   "h": 224,
+   "kind": "equipment",
+   "anchor": [
+    127.6,
+    160.3
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    2.95,
+    1.011
+   ]
+  },
+  "schoolgirl_q_back": {
+   "page": 0,
+   "x": 1054,
+   "y": 646,
+   "w": 85,
+   "h": 270,
+   "kind": "person",
+   "anchor": [
+    42.2,
+    269.0
+   ],
+   "mirror": true,
+   "hips": 143.3,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "customer",
+   "look": "schoolgirl",
+   "shadow": 0.35
+  },
+  "schoolgirl_q_front": {
+   "page": 0,
+   "x": 1143,
+   "y": 646,
+   "w": 90,
+   "h": 270,
+   "kind": "person",
+   "anchor": [
+    44.5,
+    269.0
+   ],
+   "mirror": true,
+   "hips": 143.3,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "customer",
+   "look": "schoolgirl",
+   "shadow": 0.35
+  },
+  "schoolgirl_side": {
+   "page": 0,
+   "x": 1237,
+   "y": 646,
+   "w": 84,
+   "h": 270,
+   "kind": "person",
+   "anchor": [
+    42.0,
+    269.0
+   ],
+   "mirror": true,
+   "hips": 143.3,
+   "head": 1.0,
+   "faces": "right",
+   "role": "customer",
+   "look": "schoolgirl",
+   "shadow": 0.35
+  },
+  "sink": {
+   "page": 0,
+   "x": 83,
+   "y": 930,
+   "w": 265,
+   "h": 242,
+   "kind": "equipment",
+   "anchor": [
+    131.9,
+    175.2
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    3.1,
+    1.016
+   ]
+  },
+  "square_table": {
+   "page": 0,
+   "x": 386,
+   "y": 1198,
+   "w": 232,
+   "h": 200,
+   "kind": "table",
+   "anchor": [
+    115.5,
+    163.4
+   ],
+   "mirror": true,
+   "shadow": 0.22,
+   "foot": [
+    1.75,
+    1.75
+   ],
+   "top_h": 97.3
+  },
+  "stock_pot": {
+   "page": 0,
+   "x": 89,
+   "y": 1408,
+   "w": 109,
+   "h": 128,
+   "kind": "loose",
+   "anchor": [
+    54.2,
+    126.0
+   ],
+   "mirror": true,
+   "shadow": 0.25
+  },
+  "stool": {
+   "page": 0,
+   "x": 880,
+   "y": 1408,
+   "w": 61,
+   "h": 90,
+   "kind": "furniture",
+   "anchor": [
+    30.5,
+    74.1
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    0.459,
+    0.469
+   ]
+  },
+  "student_q_back": {
+   "page": 0,
+   "x": 764,
+   "y": 646,
+   "w": 92,
+   "h": 274,
+   "kind": "person",
+   "anchor": [
+    45.5,
+    272.0
+   ],
+   "mirror": true,
+   "hips": 144.9,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "customer",
+   "look": "student",
+   "shadow": 0.35
+  },
+  "student_q_front": {
+   "page": 0,
+   "x": 860,
+   "y": 646,
+   "w": 96,
+   "h": 274,
+   "kind": "person",
+   "anchor": [
+    47.8,
+    272.0
+   ],
+   "mirror": true,
+   "hips": 144.9,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "customer",
+   "look": "student",
+   "shadow": 0.35
+  },
+  "student_side": {
+   "page": 0,
+   "x": 960,
+   "y": 646,
+   "w": 90,
+   "h": 274,
+   "kind": "person",
+   "anchor": [
+    44.8,
+    272.0
+   ],
+   "mirror": true,
+   "hips": 144.9,
+   "head": 1.0,
+   "faces": "left",
+   "role": "customer",
+   "look": "student",
+   "shadow": 0.35
+  },
+  "takeaway": {
+   "page": 0,
+   "x": 842,
+   "y": 930,
+   "w": 144,
+   "h": 238,
+   "kind": "furniture",
+   "anchor": [
+    72.2,
+    201.9
+   ],
+   "mirror": true,
+   "shadow": 0.32,
+   "foot": [
+    1.85,
+    0.404
+   ]
+  },
+  "takeaway_shelf": {
+   "page": 0,
+   "x": 352,
+   "y": 930,
+   "w": 182,
+   "h": 242,
+   "kind": "equipment",
+   "anchor": [
+    91.3,
+    195.9
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    2.346,
+    0.454
+   ]
+  },
+  "ticket_rail": {
+   "page": 0,
+   "x": 945,
+   "y": 1408,
+   "w": 76,
+   "h": 82,
+   "kind": "wall",
+   "anchor": [
+    38.0,
+    41.2
+   ],
+   "mirror": true,
+   "shadow": 0.0,
+   "wall": "R"
+  },
+  "toaster": {
+   "page": 0,
+   "x": 335,
+   "y": 1408,
+   "w": 98,
+   "h": 121,
+   "kind": "equipment",
+   "anchor": [
+    49.2,
+    95.3
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    0.9,
+    0.633
+   ]
+  },
+  "uncle_q_back": {
+   "page": 0,
+   "x": 490,
+   "y": 646,
+   "w": 94,
+   "h": 280,
+   "kind": "person",
+   "anchor": [
+    46.5,
+    278.0
+   ],
+   "mirror": true,
+   "hips": 148.2,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "customer",
+   "look": "uncle",
+   "shadow": 0.35
+  },
+  "uncle_q_front": {
+   "page": 0,
+   "x": 588,
+   "y": 646,
+   "w": 96,
+   "h": 280,
+   "kind": "person",
+   "anchor": [
+    47.5,
+    278.0
+   ],
+   "mirror": true,
+   "hips": 148.2,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "customer",
+   "look": "uncle",
+   "shadow": 0.35
+  },
+  "uncle_side": {
+   "page": 0,
+   "x": 688,
+   "y": 646,
+   "w": 72,
+   "h": 280,
+   "kind": "person",
+   "anchor": [
+    35.8,
+    278.0
+   ],
+   "mirror": true,
+   "hips": 148.2,
+   "head": 1.0,
+   "faces": "left",
+   "role": "customer",
+   "look": "uncle",
+   "shadow": 0.35
+  },
+  "urns": {
+   "page": 0,
+   "x": 537,
+   "y": 1408,
+   "w": 109,
+   "h": 108,
+   "kind": "loose",
+   "anchor": [
+    54.2,
+    106.5
+   ],
+   "mirror": true,
+   "shadow": 0.0
+  },
+  "utensil_rail": {
+   "page": 0,
+   "x": 1701,
+   "y": 1198,
+   "w": 94,
+   "h": 150,
+   "kind": "wall",
+   "anchor": [
+    47.0,
+    74.8
+   ],
+   "mirror": true,
+   "shadow": 0.0,
+   "wall": "R"
+  },
+  "waiter_q_back": {
+   "page": 0,
+   "x": 654,
+   "y": 2,
+   "w": 90,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    45.0,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "staff",
+   "look": "waiter",
+   "shadow": 0.35
+  },
+  "waiter_q_front": {
+   "page": 0,
+   "x": 748,
+   "y": 2,
+   "w": 96,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    47.8,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "staff",
+   "look": "waiter",
+   "shadow": 0.35
+  },
+  "waiter_side": {
+   "page": 0,
+   "x": 848,
+   "y": 2,
+   "w": 64,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    31.8,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.0,
+   "faces": "right",
+   "role": "staff",
+   "look": "waiter",
+   "shadow": 0.35
+  },
+  "waiter_tray_q_back": {
+   "page": 0,
+   "x": 916,
+   "y": 2,
+   "w": 115,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    57.0,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.5,
+   "faces": "-u",
+   "role": "staff",
+   "look": "waiter_tray",
+   "shadow": 0.35
+  },
+  "waiter_tray_q_front": {
+   "page": 0,
+   "x": 1035,
+   "y": 2,
+   "w": 105,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    52.2,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.5,
+   "faces": "+v",
+   "role": "staff",
+   "look": "waiter_tray",
+   "shadow": 0.35
+  },
+  "waiter_tray_side": {
+   "page": 0,
+   "x": 1144,
+   "y": 2,
+   "w": 99,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    49.0,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.5,
+   "faces": "left",
+   "role": "staff",
+   "look": "waiter_tray",
+   "shadow": 0.35
+  },
+  "wall_fan": {
+   "page": 0,
+   "x": 202,
+   "y": 1408,
+   "w": 76,
+   "h": 124,
+   "kind": "wall",
+   "anchor": [
+    38.0,
+    61.8
+   ],
+   "mirror": true,
+   "shadow": 0.0,
+   "wall": "L"
+  },
+  "wok_cook_q_back": {
+   "page": 0,
+   "x": 1544,
+   "y": 2,
+   "w": 92,
+   "h": 291,
+   "kind": "person",
+   "anchor": [
+    45.8,
+    289.0
+   ],
+   "mirror": true,
+   "hips": 154.2,
+   "head": 1.5,
+   "faces": "-u",
+   "role": "staff",
+   "look": "wok_cook",
+   "shadow": 0.35
+  },
+  "wok_cook_q_front": {
+   "page": 0,
+   "x": 1640,
+   "y": 2,
+   "w": 98,
+   "h": 291,
+   "kind": "person",
+   "anchor": [
+    48.8,
+    289.5
+   ],
+   "mirror": true,
+   "hips": 154.2,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "staff",
+   "look": "wok_cook",
+   "shadow": 0.35
+  },
+  "wok_cook_side": {
+   "page": 0,
+   "x": 1742,
+   "y": 2,
+   "w": 63,
+   "h": 291,
+   "kind": "person",
+   "anchor": [
+    31.2,
+    289.0
+   ],
+   "mirror": true,
+   "hips": 154.2,
+   "head": 1.0,
+   "faces": "right",
+   "role": "staff",
+   "look": "wok_cook",
+   "shadow": 0.35
+  },
+  "wok_range": {
+   "page": 0,
+   "x": 1458,
+   "y": 354,
+   "w": 368,
+   "h": 281,
+   "kind": "equipment",
+   "anchor": [
+    184.0,
+    188.1
+   ],
+   "mirror": true,
+   "shadow": 0.25,
+   "foot": [
+    4.4,
+    1.343
+   ]
+  },
+  "worker_q_back": {
+   "page": 0,
+   "x": 1247,
+   "y": 2,
+   "w": 103,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    51.2,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.0,
+   "faces": "-u",
+   "role": "customer",
+   "look": "worker",
+   "shadow": 0.35
+  },
+  "worker_q_front": {
+   "page": 0,
+   "x": 1354,
+   "y": 2,
+   "w": 106,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    52.5,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.0,
+   "faces": "+v",
+   "role": "customer",
+   "look": "worker",
+   "shadow": 0.35
+  },
+  "worker_side": {
+   "page": 0,
+   "x": 1464,
+   "y": 2,
+   "w": 76,
+   "h": 294,
+   "kind": "person",
+   "anchor": [
+    38.0,
+    292.5
+   ],
+   "mirror": true,
+   "hips": 155.8,
+   "head": 1.0,
+   "faces": "left",
+   "role": "customer",
+   "look": "worker",
+   "shadow": 0.35
+  }
+ },
+ "facing": {
+  "q_front": "+v (down-left); mirrored +u",
+  "q_back": "-u (up-left); mirrored -v",
+  "side": "per part 'faces': the profile's native facing on the sheet"
+ },
+ "looks": {
+  "customers": [
+   "worker",
+   "housewife",
+   "office_lady",
+   "student",
+   "uncle",
+   "office_man",
+   "housewife2",
+   "granny",
+   "schoolgirl"
+  ],
+  "neighbour_tiles": 9.5,
+  "rules": [
+   {
+    "pattern": "地盤",
+    "members": [
+     [
+      "worker"
+     ]
+    ]
+   },
+   {
+    "pattern": "阿婆|婆婆",
+    "members": [
+     [
+      "granny"
+     ],
+     [
+      "granny",
+      "housewife2"
+     ]
+    ]
+   },
+   {
+    "pattern": "伯|阿叔|保安",
+    "members": [
+     [
+      "uncle"
+     ]
+    ]
+   },
+   {
+    "pattern": "情侶|同女伴",
+    "members": [
+     [
+      "office_man"
+     ],
+     [
+      "office_lady",
+      "schoolgirl"
+     ]
+    ]
+   },
+   {
+    "pattern": "一家|兩代",
+    "members": [
+     [
+      "office_man",
+      "uncle"
+     ],
+     [
+      "housewife",
+      "housewife2"
+     ],
+     [
+      "student"
+     ],
+     [
+      "schoolgirl"
+     ]
+    ]
+   },
+   {
+    "pattern": "學生|打機|後生",
+    "members": [
+     [
+      "student",
+      "schoolgirl"
+     ]
+    ]
+   },
+   {
+    "pattern": "OL|阿姐|Miss|小姐",
+    "members": [
+     [
+      "office_lady"
+     ],
+     [
+      "office_lady",
+      "housewife2"
+     ]
+    ]
+   },
+   {
+    "pattern": "太|師奶",
+    "members": [
+     [
+      "housewife",
+      "housewife2"
+     ]
+    ]
+   },
+   {
+    "pattern": "同事|返工|上班|的士|夜更",
+    "members": [
+     [
+      "office_man",
+      "office_lady"
+     ]
+    ]
+   },
+   {
+    "pattern": "生|哥",
+    "members": [
+     [
+      "office_man",
+      "uncle"
+     ]
+    ]
+   }
+  ],
+  "hash": "FNV-1a 32-bit of UTF-8 '<group id>:<member index>'",
+  "pick": "first rule matching the label gives member k's candidates (last list repeats; no match: all customers); start at hash % len; first candidate not at a neighbouring table nor earlier in the party; else the same walk over all customers; else the hashed candidate"
+ },
+ "gates": {
+  "failed": {},
+  "parts": 105
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "id": "R-KITCHEN",
+ "size": [
+  1536,
+  1024
+ ],
+ "kind": "things",
+ "what": "piece of cha chaan teng kitchen equipment",
+ "camera": "iso",
+ "scale": "One scale for all, the same as the board's counters (the long cashier counter there is about 2.2 m long and waist-high). ",
+ "board": [
+  [
+   "I-COUNTER",
+   "counter"
+  ],
+  [
+   "B1-DEPT",
+   "pass"
+  ],
+  [
+   "B1-DEPT",
+   "bar"
+  ],
+  [
+   "I-COUNTER",
+   "cake_case"
+  ],
+  [
+   "I-FURN",
+   "booth_table"
+  ],
+  [
+   "B1-DEPT",
+   "takeaway"
+  ]
+ ],
+ "items": [
+  {
+   "name": "wok_range",
+   "zh": "炒爐連三個鑊",
+   "look": "a Cantonese wok range about 2.2 m long and waist-high: a stainless steel body with three round burner wells in a row, a black carbon-steel wok sitting in each, a little stir-fry in the middle wok, a water tap arm over the back edge; its long front faces down-left",
+   "cell": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  },
+  {
+   "name": "hood",
+   "zh": "抽油煙罩",
+   "look": "a stainless steel kitchen extractor hood, a long sloping canopy with a square duct going straight up from its top, mounted on the back wall; its long front faces down-left; nothing under it",
+   "cell": [
+    2,
+    0,
+    2,
+    0
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  },
+  {
+   "name": "prep_counter",
+   "zh": "備料枱",
+   "look": "a stainless steel prep counter about 1.5 m long and waist-high, an undershelf below, a wooden chopping board with a cleaver and a small pile of chopped spring onion on top, a steel stock pot at one end; its long front faces down-left",
+   "cell": [
+    0,
+    1,
+    0,
+    1
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  },
+  {
+   "name": "pass",
+   "zh": "出菜口鋼枱",
+   "look": "a kitchen pass: a waist-high plastered wall section about 1.1 m long topped by a wide stainless steel shelf, a small brass service bell on the shelf, otherwise empty; its long front faces down-left",
+   "cell": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  },
+  {
+   "name": "stock_pot",
+   "zh": "大湯煲連矮爐",
+   "look": "a huge aluminium stock pot with a lid on a low single-ring gas stove standing on the floor, a ladle resting against it",
+   "cell": [
+    2,
+    1,
+    2,
+    1
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  }
+ ]
+}

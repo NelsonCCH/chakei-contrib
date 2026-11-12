@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#235648">
+<meta name="robots" content="noindex">
+<title>送外賣 · 外賣單車</title>
+<!-- The 送外賣 deliver station on its own page, for playing it alone on a phone.
+     The station is src/stations-next/deliver/ (core.ts, bot.ts, ui.ts). deliver.js is built by scripts/build.mjs
+     (npm run build). Not linked from the game. -->
+<style>
+:root{
+  --wall:#235648; --wall-hi:#2f6b5a; --paper:#fbfaf1; --ink:#1c2924; --mute:#58695f;
+  --red:#c8323c; --amber:#cf861a; --ok:#2a8b67; --cream:#f4efd9; --cold:#3b7fd0;
+  --body:"PingFang HK","Noto Sans HK","Microsoft JhengHei",system-ui,sans-serif;
+  color-scheme:light;
+}
+html,body{margin:0;height:100%;background:var(--wall);color:var(--ink);font-family:var(--body);overflow:hidden;overscroll-behavior:none;
+  touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+body{position:fixed;inset:0}
+button{font:inherit;color:inherit;touch-action:manipulation}
+#app{position:relative;margin:0 auto;max-width:480px;height:100%;display:flex;flex-direction:column;background:var(--wall);overflow:hidden}
+/* One compact row over the road (menu, the bags' countdowns, metres to the next stop, sound); the rest of the
+   explaining is on the start card, so the road gets the height */
+#hud{flex:0 0 auto;display:flex;align-items:center;gap:4px;padding:calc(env(safe-area-inset-top,0px) + 4px) 6px 4px;background:var(--wall);color:var(--cream);box-sizing:border-box}
+#hud .s{flex:0 0 auto;font-size:14px;font-weight:900;white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.hb{flex:0 0 auto;border:2px solid #0f1a16;background:var(--wall-hi);color:var(--cream);border-radius:8px;padding:4px 5px;font-size:13px;font-weight:700;min-width:30px}
+.hb.on{background:var(--cream);color:var(--ink)}
+.hb[hidden]{display:none}
+#orders{flex:1;min-width:0;display:flex;gap:4px;min-height:31px;box-sizing:border-box}
+.oc{flex:1;min-width:0;color:var(--ink);background:var(--paper);border:2px solid #0f1a16;border-radius:8px;padding:2px 4px 2px;box-shadow:0 2px 0 #0f1a16;box-sizing:border-box}
+.oc.next{box-shadow:0 2px 0 #0f1a16,0 0 0 2px #ffd25a}
+.oc .h{display:flex;justify-content:space-between;align-items:baseline;gap:2px;font-weight:900;font-size:14px;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.oc .h small{font-size:11px;font-weight:700;color:var(--mute)}
+.oc .bar{height:4px;border:1px solid #0f1a16;border-radius:3px;background:#d8ddd6;margin-top:2px;overflow:hidden}
+.oc .bar i{display:block;height:100%;background:#e8402f;width:100%}
+.oc.warm .bar i{background:#e8a21a}
+.oc.cool .bar i{background:#7fb6e8}
+.oc.cold{background:#dbe8f6}
+.oc.cold .h small{color:var(--cold)}
+.oc.done{background:#d7f0dc}
+.oc.done.cold{background:#dbe8f6}
+#orders .hint{color:var(--cream);font-size:14px;font-weight:700;align-self:center;opacity:.85}
+.scene{position:relative;overflow:hidden;flex:1 1 0;background:#56605c}
+.scene canvas{position:absolute;left:0;top:0}
+.pxl{image-rendering:pixelated;image-rendering:crisp-edges}
+.shake{animation:sh .3s linear}
+@keyframes sh{0%,100%{transform:none}25%{transform:translate(-5px,2px)}50%{transform:translate(5px,-2px)}75%{transform:translate(-2px,-1px)}}
+#ctrl{flex:0 0 auto;display:flex;gap:8px;align-items:stretch;padding:8px 8px calc(env(safe-area-inset-bottom,0px) + 10px);background:var(--wall)}
+#gauge{flex:0 0 132px;display:flex;flex-direction:column;justify-content:center;gap:4px;color:var(--cream)}
+#gauge .lbl{font-size:13px;font-weight:900;display:flex;justify-content:space-between}
+#gauge .pips{display:flex;gap:3px;align-items:flex-end;height:38px}
+#gauge .pips i{flex:1;border:2px solid #0f1a16;border-radius:4px;background:#1b463a;box-sizing:border-box}
+#gauge .pips i.on{background:#ffd25a}
+#gauge .pips i.rk.on{background:#ff6a2a}
+#bGo{flex:1;min-width:0;height:84px;border:3px solid #0f1a16;border-radius:16px;background:#ffd25a;font-size:30px;font-weight:900;box-shadow:0 5px 0 #0f1a16;touch-action:none;letter-spacing:4px}
+#bGo:active,#bGo.press{transform:translateY(4px);box-shadow:0 1px 0 #0f1a16}
+#bGo.top{background:#ff8a4a}
+#bGo:disabled{background:#c9d2cc;color:#7b8a82;box-shadow:0 2px 0 #0f1a16}
+#door{position:absolute;left:8px;right:8px;bottom:8px;z-index:7;background:rgba(251,250,241,.97);border:3px solid #0f1a16;border-radius:14px;box-shadow:0 4px 0 #0f1a16;padding:8px 8px 10px;box-sizing:border-box}
+#door[hidden]{display:none}
+#door h3{margin:0;font-size:18px;font-weight:900;text-align:center}
+#door p{margin:2px 0 6px;font-size:13px;font-weight:700;text-align:center;color:var(--mute)}
+#door .pk{display:flex;gap:6px}
+#door .pk button{flex:1;border:3px solid #0f1a16;border-radius:12px;background:#ffd25a;padding:6px 2px 5px;font-size:20px;font-weight:900;box-shadow:0 3px 0 #0f1a16;line-height:1.1}
+#door .pk button small{display:block;font-size:12px;font-weight:700;margin-top:2px}
+#door .pk button:disabled{background:#c9d2cc;color:#7b8a82;box-shadow:none}
+#door .pk button.on{background:var(--wall);color:var(--cream)}
+.ov{position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;background:rgba(15,26,22,.55)}
+.ov[hidden]{display:none}
+.card{background:var(--paper);border:3px solid #0f1a16;border-radius:14px;box-shadow:0 6px 0 #0f1a16;padding:16px;max-width:420px;width:100%;max-height:100%;overflow:auto;box-sizing:border-box}
+.card h1{margin:0 0 6px;font-size:24px;font-weight:900}
+.card h2{margin:0 0 6px;font-size:22px;font-weight:900}
+.card p{margin:6px 0;font-size:15px;line-height:1.45}
+.card .mute{color:var(--mute);font-size:13px}
+.big{display:block;width:100%;margin:10px 0 6px;padding:16px 10px;border:3px solid #0f1a16;border-radius:14px;background:#ffd25a;font-size:20px;font-weight:900;box-shadow:0 4px 0 #0f1a16}
+.big.alt{background:var(--cream);font-size:16px;padding:12px 10px}
+.row{display:flex;align-items:center;gap:6px;margin:8px 0;font-size:14px}
+.row b{width:44px;flex:0 0 auto}
+.seg{display:flex;gap:4px;flex:1}
+.seg button{flex:1;border:2px solid #0f1a16;border-radius:8px;background:#fff;padding:8px 2px;font-size:15px;font-weight:700}
+.seg button.on{background:var(--wall);color:var(--cream)}
+.secs{font-size:40px;font-weight:900;line-height:1.1;font-variant-numeric:tabular-nums;margin:4px 0}
+.secs small{font-size:16px;font-weight:700;color:var(--mute)}
+.ol{list-style:none;margin:8px 0;padding:0}
+.ol li{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;margin:4px 0;border:2px solid #0f1a16;border-radius:10px;font-size:16px;font-weight:900;background:#ffe2c8}
+.ol li.cold{background:#dbe8f6}
+.ol li span{font-size:14px;font-weight:700}
+.quote{margin:6px 0;padding:6px 10px;background:#fff6c8;border:2px solid #0f1a16;border-radius:10px;font-size:15px;font-weight:700}
+#rot{position:fixed;z-index:40;background:rgba(15,26,22,.92);color:var(--cream);text-align:center;font-size:22px;font-weight:900}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud"><button class="hb" id="bMenu">≡</button><div id="orders"></div><span class="s" id="hs"></span>
+    <button class="hb" id="bSnd">聲 關</button></div>
+  <div class="scene" id="road"><canvas class="pxl"></canvas><canvas class="txl"></canvas><div id="door" hidden></div></div>
+  <div id="ctrl">
+    <div id="gauge"><div class="lbl"><span>波段</span><span id="gN">0</span></div>
+      <div class="pips"><i style="height:30%"></i><i style="height:42%"></i><i style="height:56%"></i><i style="height:70%"></i><i style="height:84%"></i><i class="rk" style="height:100%"></i></div></div>
+    <button id="bGo">加速</button>
+  </div>
+
+  <div class="ov" id="ovStart"><div class="card">
+    <h1>送外賣</h1>
+    <p>踩單車送外賣，送完返舖頭。路上有的士、小巴、巴士，<b>撳路嘅左邊／右邊</b>（或者左右掃）轉線避車。</p>
+    <p><b>撳「加速」</b>一下升一波，越升越快；升到盡有火箭推。撞車就要扶返架車起身，由最慢重新踩過。</p>
+    <p><b>火箭係搏嘅：</b>一段路有一半以上用火箭、冇撞過車就踩到落單位，嗰袋貼士 ×2；但車嚟得好快，一撞就冇咗火箭貼士，仲要由頭踩過。</p>
+    <p>單數揀得多，一轉送晒，貼士有加成（×1.3／×1.6），但架車重咗：轉線、升波都慢啲。</p>
+    <p>每張單有條倒數（啲嘢食就快凍）。路邊有寫住單號嘅大廈 = 落單位；凍咗都照送，但會記低。踩慢啲穩陣，踩快啲搏少啲時間 —— 你離開舖頭幾耐都計晒，返到舖頭先話你知。</p>
+    <p>踩緊嘅時候：<b>上面</b>每袋一格（單號、剩幾秒、條倒數；黃框 = 下一個落單位），右邊係去下一站仲有幾多米；<b>下面</b>係波段同加速掣。</p>
+    <div class="row"><b>單數</b><div class="seg" id="segN"><button data-v="1">1 張</button><button data-v="2">2 張</button><button data-v="3">3 張</button></div></div>
+    <div class="row"><b>難度</b><div class="seg" id="segDiff"><button data-v="rookie">新人</button><button data-v="pro">熟手</button><button data-v="ace">阿姐</button></div></div>
+    <button class="big" id="bStart">出發！</button>
+    <p class="mute">電腦：← → 轉線，↑ 或者空白鍵加速。</p>
+  </div></div>
+
+  <div class="ov" id="ovCard" hidden><div class="card" id="cardBody"></div></div>
+  <div class="ov" id="rot" hidden><div>打直部電話先<br><span style="font-size:15px;font-weight:700">（暫停咗）</span></div></div>
+</div>
+<script src="deliver.js"></script>
+</body>
+</html>

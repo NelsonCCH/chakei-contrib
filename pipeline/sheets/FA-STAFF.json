@@ -1,0 +1,46 @@
+{
+ "id": "FA-STAFF",
+ "size": [
+  1024,
+  1536
+ ],
+ "kind": "people",
+ "board": [
+  [
+   "B1-STAFF",
+   "cashier_q_front"
+  ],
+  [
+   "B1-STAFF",
+   "barman_q_front"
+  ],
+  [
+   "I-CHAR-2",
+   "waiter_q_front"
+  ],
+  [
+   "B1-STAFF",
+   "cashier_q_back"
+  ],
+  [
+   "B1-STAFF",
+   "barman_side"
+  ],
+  [
+   "I-CHAR-2",
+   "waiter_side"
+  ]
+ ],
+ "people": [
+  {
+   "name": "dishwasher",
+   "zh": "洗碗姐",
+   "look": "a dishwasher, a middle-aged Cantonese woman: short permed black hair, a pale pink short-sleeved blouse, a long dark green rubber apron, yellow rubber gloves to the elbow, dark trousers, black rubber boots"
+  },
+  {
+   "name": "waiter_tray",
+   "zh": "侍應托盤",
+   "look": "the board's waiter (short black hair, a white short-sleeved shirt with pens in its pocket, a black belt, black trousers, black shoes), carrying a round steel tray at chest height in both hands, a plate of food and a cup of milk tea on it"
+  }
+ ]
+}

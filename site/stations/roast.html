@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#235648">
+<meta name="robots" content="noindex">
+<title>燒味 · 手感測試</title>
+<!-- The 燒味 station on its own (src/stations-next/roast), ported 1:1 from the original prototype, for
+     playing it alone on a phone. Script: roast.js, built by scripts/build.mjs from src/stations-next/roast/page.ts. -->
+<style>
+:root{
+  --wall:#235648; --wall-hi:#2f6b5a; --paper:#fbfaf1; --ink:#1c2924; --mute:#58695f;
+  --red:#c8323c; --amber:#cf861a; --ok:#2a8b67; --cream:#f4efd9;
+  --body:"PingFang HK","Noto Sans HK","Microsoft JhengHei",system-ui,sans-serif;
+  color-scheme:light;
+}
+html,body{margin:0;height:100%;background:var(--wall);color:var(--ink);font-family:var(--body);overflow:hidden;overscroll-behavior:none;
+  touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+body{position:fixed;inset:0}
+button{font:inherit;color:inherit;touch-action:manipulation}
+#app{position:relative;margin:0 auto;max-width:480px;height:100%;display:flex;flex-direction:column;background:#a9cbbd;overflow:hidden}
+#hud{flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:calc(env(safe-area-inset-top,0px) + 3px) 8px 3px;background:var(--wall);color:var(--cream);min-height:28px;box-sizing:border-box}
+#hud .t{font-weight:900;font-size:13px;white-space:nowrap}
+#hud .s{flex:1;min-width:0;font-size:11px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}
+.hb{border:2px solid #0f1a16;background:var(--wall-hi);color:var(--cream);border-radius:7px;padding:1px 6px;font-size:12px;font-weight:700;min-width:30px}
+.hb.on{background:var(--cream);color:var(--ink)}
+#prog{flex:0 0 4px;background:#173f34;position:relative}
+#prog i{position:absolute;left:0;top:0;bottom:0;background:#ffd25a;width:0}
+.scene{position:relative;overflow:hidden;flex:1 1 0;padding-bottom:env(safe-area-inset-bottom,0px)}
+.scene canvas{position:absolute;left:0;top:0}
+.pxl{image-rendering:pixelated;image-rendering:crisp-edges}
+.shake{animation:sh .18s linear}
+@keyframes sh{0%,100%{transform:none}30%{transform:translate(0,3px)}60%{transform:translate(-1px,-1px)}}
+.ov{position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;background:rgba(15,26,22,.55)}
+.ov[hidden]{display:none}
+.card{background:var(--paper);border:3px solid #0f1a16;border-radius:14px;box-shadow:0 6px 0 #0f1a16;padding:16px;max-width:420px;width:100%;max-height:100%;overflow:auto;box-sizing:border-box}
+.card h1{margin:0 0 6px;font-size:24px;font-weight:900}
+.card h2{margin:0 0 6px;font-size:22px;font-weight:900}
+.card p{margin:6px 0;font-size:15px;line-height:1.45}
+.card .mute{color:var(--mute);font-size:13px}
+.card table{border-collapse:collapse;font-size:14px;margin:6px 0;width:100%}
+.card td{padding:3px 4px;border-bottom:1px solid #d6e3dc;vertical-align:top}
+.card td:first-child{font-weight:900;white-space:nowrap}
+.big{display:block;width:100%;margin:10px 0 6px;padding:16px 10px;border:3px solid #0f1a16;border-radius:14px;background:#ffd25a;font-size:20px;font-weight:900;box-shadow:0 4px 0 #0f1a16}
+.big.alt{background:var(--cream);font-size:16px;padding:12px 10px}
+.row{display:flex;align-items:center;gap:6px;margin:8px 0;font-size:14px}
+.row b{width:44px;flex:0 0 auto}
+.seg{display:flex;gap:4px;flex:1}
+.seg button{flex:1;border:2px solid #0f1a16;border-radius:8px;background:#fff;padding:7px 2px;font-size:14px;font-weight:700}
+.seg button.on{background:var(--wall);color:var(--cream)}
+.stat{font-size:17px;font-weight:700;line-height:1.6}
+.card .stars{margin:2px 0;font-size:34px;line-height:1;color:#e8a21a;letter-spacing:4px;-webkit-text-stroke:1.5px #0f1a16}
+.stars span{color:#d8ddd6}
+.quote{margin:6px 0;padding:6px 10px;background:#fff6c8;border:2px solid #0f1a16;border-radius:10px;font-size:15px;font-weight:700}
+#dbg{position:absolute;left:4px;top:4px;z-index:5;margin:0;padding:4px 6px;background:rgba(15,26,22,.8);color:#bfe3c8;font:11px/1.35 ui-monospace,Menlo,Consolas,monospace;border-radius:6px;pointer-events:none;white-space:pre}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud"><span class="t">燒味</span><span class="s" id="hs">手感測試</span>
+    <button class="hb" id="bSnd">聲 關</button><button class="hb" id="bDbg">數</button><button class="hb" id="bMenu">≡</button></div>
+  <div id="prog"><i id="progI"></i></div>
+  <div class="scene" id="shop"><canvas class="pxl"></canvas><canvas class="txl"></canvas><pre id="dbg" hidden></pre></div>
+
+  <div class="ov" id="ovStart"><div class="card">
+    <h1>燒味</h1>
+    <p>跟住上面張飛做，一步步：</p>
+    <table>
+      <tr><td>揀底</td><td>撳 白飯（用<b>碟</b>）或者 瀨粉／米粉／河粉（用<b>碗</b>）</td></tr>
+      <tr><td>湯粉</td><td>由湯煲<b>拖一殼湯</b>落碗，再撳蔥花</td></tr>
+      <tr><td>拉肉</td><td>將張飛寫嗰款燒味由鐵通<b>拖落砧板</b></td></tr>
+      <tr><td>斬料</td><td>要幾多件就斬幾多刀：數字 1、2、3… 企喺<b>虛線</b>上面，<b>撳虛線</b>斬（撳實撳耐都得，次序隨你）；叉燒就手指由上面<b>沿虛線𠝹落</b>。燒鴨、燒雞嘅虛線就係骨位，斬歪咗骨會碎。斬喺線上件件一樣闊</td></tr>
+      <tr><td>上碟</td><td>切晒有數字（1、2、3…）嗰幾件，<b>拖去碟／碗</b>；「剩」嗰截自己掛返</td></tr>
+      <tr><td>白飯</td><td><b>撳住豉油樽</b>，淋到綠色格就放手</td></tr>
+      <tr><td>配料</td><td>張飛有寫先加：薑葱、油菜</td></tr>
+      <tr><td>出餐</td><td>喺碟／碗<b>向上掃</b>（向下掃 = 倒咗重做）</td></tr>
+    </table>
+    <div class="row"><b>難度</b><div class="seg" id="segDiff"><button data-v="rookie">新人</button><button data-v="pro">熟手</button><button data-v="ace">阿姐</button></div></div>
+    <p class="mute" id="diffHelp"></p>
+    <div class="row"><b>刀工</b><div class="seg" id="segTier"><button data-v="auto">跟難度</button><button data-v="0">易</button><button data-v="1">中</button><button data-v="2">難</button><button data-v="3">勁</button></div></div>
+    <button class="big" id="bGo">開工</button>
+  </div></div>
+  <div class="ov" id="ovCard" hidden><div class="card" id="cardBody"></div></div>
+</div>
+<script src="roast.js"></script>
+</body>
+</html>

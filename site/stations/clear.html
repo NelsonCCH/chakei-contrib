@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#235648">
+<meta name="robots" content="noindex">
+<title>執枱</title>
+<!-- The 執枱 table-clearing station on its own page, for playing it alone on a phone. The station
+     is src/stations-next/clear/ (core.ts, bot.ts, ui.ts); clear.js is built by scripts/build.mjs (npm run build).
+     With ?seat the game page runs the station and this page only draws it. Not linked from the game. -->
+<style>
+:root{
+  --wall:#235648; --wall-hi:#2f6b5a; --paper:#fbfaf1; --ink:#1c2924; --mute:#58695f;
+  --red:#c8323c; --amber:#cf861a; --ok:#2a8b67; --cream:#f4efd9;
+  --body:"PingFang HK","Noto Sans HK","Microsoft JhengHei",system-ui,sans-serif;
+  color-scheme:light;
+}
+html,body{margin:0;height:100%;background:var(--wall);color:var(--ink);font-family:var(--body);overflow:hidden;overscroll-behavior:none;
+  touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+body{position:fixed;inset:0}
+button{font:inherit;color:inherit;touch-action:manipulation}
+#app{position:relative;margin:0 auto;max-width:480px;height:100%;display:flex;flex-direction:column;background:var(--wall);overflow:hidden}
+#hud{flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:calc(env(safe-area-inset-top,0px) + 6px) 8px 4px;background:var(--wall);color:var(--cream);min-height:40px;box-sizing:border-box}
+#hud .t{font-weight:900;font-size:16px;white-space:nowrap}
+#hud.live .t{display:none}
+#hud .s{flex:1;min-width:0;font-size:13px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}
+.hb{border:2px solid #0f1a16;background:var(--wall-hi);color:var(--cream);border-radius:8px;padding:4px 7px;font-size:13px;font-weight:700;min-width:34px}
+.hb.on{background:var(--cream);color:var(--ink)}
+.hb[hidden]{display:none}
+.scene{position:relative;overflow:hidden;flex:1 1 0}
+.scene canvas{position:absolute;left:0;top:0}
+.shake{animation:sh .3s linear}
+@keyframes sh{0%,100%{transform:none}20%{transform:translate(-6px,2px)}40%{transform:translate(6px,-2px)}60%{transform:translate(-4px,-1px)}80%{transform:translate(3px,1px)}}
+#keys{flex:0 0 auto;display:flex;gap:8px;padding:8px 10px calc(env(safe-area-inset-bottom,0px) + 12px);background:var(--wall)}
+.key{flex:1;min-width:0;height:118px;border:3px solid #0f1a16;border-radius:16px;background:var(--cream);box-shadow:0 5px 0 #0f1a16;padding:4px 2px 2px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;touch-action:none;transition:transform .05s}
+.key canvas{width:64px;height:64px;pointer-events:none}
+.key b{font-size:26px;font-weight:900;line-height:1;pointer-events:none}
+.key.dn{transform:translateY(4px);box-shadow:0 1px 0 #0f1a16;background:#ffd25a}
+.key.off{opacity:.55}
+.ov{position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;background:rgba(15,26,22,.55)}
+.ov[hidden]{display:none}
+.card{background:var(--paper);border:3px solid #0f1a16;border-radius:14px;box-shadow:0 6px 0 #0f1a16;padding:16px;max-width:420px;width:100%;max-height:100%;overflow:auto;box-sizing:border-box}
+.card h1{margin:0 0 6px;font-size:24px;font-weight:900}
+.card p{margin:6px 0;font-size:15px;line-height:1.45}
+.card .mute{color:var(--mute);font-size:13px}
+.big{display:block;width:100%;margin:12px 0 4px;padding:16px 10px;border:3px solid #0f1a16;border-radius:14px;background:#ffd25a;font-size:20px;font-weight:900;box-shadow:0 4px 0 #0f1a16}
+.row{display:flex;align-items:center;gap:6px;margin:10px 0 4px;font-size:14px}
+.row b{width:44px;flex:0 0 auto}
+.seg{display:flex;gap:4px;flex:1}
+.seg button{flex:1;border:2px solid #0f1a16;border-radius:8px;background:#fff;padding:8px 2px;font-size:14px;font-weight:700}
+.seg button.on{background:var(--wall);color:var(--cream)}
+.warn{color:var(--red);font-weight:900}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud"><span class="t">執枱</span><span class="s" id="hs"></span>
+    <button class="hb" id="bSnd" title="聲">聲 關</button><button class="hb" id="bMenu">≡</button></div>
+  <div class="scene" id="board"><canvas class="txl"></canvas></div>
+  <div id="keys">
+    <button class="key" data-k="plate"><canvas></canvas><b>碟</b></button>
+    <button class="key" data-k="bowl"><canvas></canvas><b>碗</b></button>
+    <button class="key" data-k="cup"><canvas></canvas><b>杯</b></button>
+  </div>
+
+  <div class="ov" id="ovStart"><div class="card">
+    <h1>執枱</h1>
+    <p>客走咗，張枱一片狼藉：碟、碗、杯疊埋一齊。撳下面個掣，撳一下就收走一隻：撳「碟」收一隻碟，撳「碗」收一隻碗，撳「杯」收一隻杯。</p>
+    <p>要睇住枱面數清楚先好撳。<span class="warn">某樣已經收晒仲撳多一下 = 多撳咗，成張枱重新嚟過！</span></p>
+    <p>收晒最後一隻就搞掂，睇下用咗幾多秒。趕住亂撳，好多時仲慢過慢慢數。</p>
+    <p class="mute">筷子、匙羹、紙巾、麵包碎唔使理。電腦：1 / 2 / 3 鍵。</p>
+    <div class="row"><b>難度</b><div class="seg" id="segDiff"><button data-v="rookie">新人</button><button data-v="pro">熟手</button><button data-v="ace">阿姐</button></div></div>
+    <button class="big" id="bGo">開始執枱</button>
+  </div></div>
+</div>
+<script src="clear.js"></script>
+</body>
+</html>

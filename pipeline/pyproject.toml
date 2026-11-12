@@ -1,0 +1,12 @@
+[tool.ruff]
+line-length = 140
+
+[tool.pyright]
+include = ["."]
+exclude = ["work", "out"]
+typeCheckingMode = "strict"
+pythonVersion = "3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,11 @@
+{
+  // The shop's rules (src/core/) on their own, without the DOM library: the room's Durable Object runs this code in
+  // workerd, so nothing in core may touch the page. tsconfig.json checks the same files with
+  // the DOM; this check only adds the "no DOM" rule.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["es2022"]
+  },
+  "include": ["src/core/**/*.ts", "src/model.d.ts", "src/types/*.d.ts"],
+  "exclude": []
+}

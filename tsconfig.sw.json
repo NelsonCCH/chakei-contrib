@@ -1,0 +1,22 @@
+{
+  // The service worker (src/sw/sw.ts -> site/sw.js, scripts/build.mjs): a classic script in a ServiceWorkerGlobalScope,
+  // so lib webworker instead of dom. Same strictness as tsconfig.json.
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022", "webworker"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    // Its own scope, so `declare const self: ServiceWorkerGlobalScope` can narrow the global `self`. No import or export
+    // is written, so the built file is still a classic script.
+    "moduleDetection": "force",
+    "types": [],
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src/sw/**/*.ts"]
+}

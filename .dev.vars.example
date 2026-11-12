@@ -1,0 +1,4 @@
+# Copy to .dev.vars for `npm run dev` (wrangler dev reads it; .dev.vars is git-ignored).
+# In production set the same secret with: npx wrangler secret put SESSION_SECRET
+# SESSION_SECRET signs the session tokens: any long random string, e.g. the output of `openssl rand -hex 32`.
+SESSION_SECRET=replace-with-a-long-random-string

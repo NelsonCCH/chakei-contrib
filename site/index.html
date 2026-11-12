@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>香城茶餐廳</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@500;700;900&family=Noto+Serif+HK:wght@900&family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=1.33">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1b2a24">
+<link rel="icon" href="icons/icon-192.png?v=3">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="香城茶餐廳">
+<meta name="description" content="喺茶記做伙記：落單、炒餸、沖奶茶、埋單，四個位揀一個做。免費，手機打開就玩。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="香城茶餐廳｜港式茶記手機遊戲">
+<meta property="og:description" content="喺茶記做伙記：落單、炒餸、沖奶茶、埋單，四個位揀一個做。免費，手機打開就玩。">
+<meta property="og:url" content="https://YOUR-DOMAIN/">
+<meta property="og:image" content="https://YOUR-DOMAIN/icons/og.png?v=4">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div id="app">
+  <div class="hud">
+    <div class="clock"><span id="clock">12:00</span><small id="clockLbl">午市</small></div>
+    <div class="heat" id="heat" aria-label="旺場" hidden><small>旺場</small><i><b></b></i></div>
+    <div class="stats">
+      <div><span>營業額</span><b id="rev">$0</b></div>
+      <div class="bad"><span id="misLbl">落錯單</span><b id="mis">0</b></div>
+      <div class="bad"><span id="angLbl">嬲走</span><b id="ang">0</b></div>
+    </div>
+    <button class="pause" id="pauseBtn" type="button">暫停</button>
+  </div>
+  <nav class="solotabs" id="soloTabs" aria-label="轉位" hidden></nav>
+  <div class="xstrip" id="xStrip" hidden></div>
+  <div class="floorwrap" id="floorWrap">
+    <div id="floor"></div>
+    <button class="viewbtn" id="viewBtn" type="button">簡易版</button>
+    <div class="pxscene fscene" id="fscene"><canvas class="pxl" aria-hidden="true"></canvas><canvas class="txl" aria-label="茶記樓面：撳門口嘅客再撳張枱帶位，撳枱落單同執枱"></canvas></div>
+    <div id="fx"></div>
+  </div>
+  <div class="door" id="doorWrap">
+    <div class="doorlbl"><span id="doorTxt">門口</span><b id="selTxt"></b></div>
+    <div id="queue"></div>
+  </div>
+  <div class="till" id="till" hidden>
+    <div class="tillbar"><span>排緊隊埋單</span><button class="boardbtn" id="boardBtn" type="button">價錢牌</button></div>
+    <div class="pxscene tscene" id="tscene"><canvas class="pxl" aria-hidden="true"></canvas><canvas class="txl" aria-label="收銀機同排隊埋單嘅客"></canvas></div>
+    <div class="cust" id="cust"></div>
+  </div>
+  <div id="pad" hidden></div>
+  <div class="barview" id="barView" hidden>
+    <div class="rail" id="rail"></div>
+    <div class="pxscene" id="bscene"><canvas class="pxl" aria-hidden="true"></canvas><canvas class="txl" aria-label="水吧：左邊茶膽撳嚟煲茶撞茶，中間係隻杯"></canvas></div>
+    <div class="bench" id="bench"></div>
+  </div>
+  <div id="barPad" hidden></div>
+  <div class="barview" id="kitView" hidden>
+    <div class="rail" id="krail"></div>
+    <div class="kscene" id="kscene"><canvas id="kcv" aria-hidden="true"></canvas><canvas id="ktv" aria-label="爐頭同隻碟：撳爐具揀煮乜、攞嘢上碟，撳個鑊炒"></canvas><div id="kpop" hidden></div></div>
+    <div id="kplate"></div>
+  </div>
+  <div id="kitPad" hidden></div>
+  <div class="seatview" id="seatView" hidden>
+    <button class="seatcover" id="seatCover" type="button" hidden>電腦代班中 — 撳一下接返</button>
+  </div>
+  <div class="decorbar" id="decorBar" hidden></div>
+</div>
+
+<div id="toast" hidden></div>
+<div class="sheetwrap" id="boardWrap" hidden><div class="sheet" id="board" role="dialog" aria-label="價錢牌"></div></div>
+<div class="sheetwrap" id="sheetWrap" hidden><div class="sheet" id="sheet" role="dialog" aria-label="落單"></div></div>
+
+<div class="overlay" id="startView">
+  <div class="card home" data-step="mode">
+    <div class="hometop">
+      <h1 class="brand"><img src="icons/sign.png" alt="香城茶餐廳" width="900" height="200"></h1>
+      <div class="toggles"><button type="button" class="soundBtn">聲：開</button><button type="button" class="musicBtn">音樂：開</button></div>
+    </div>
+    <div class="newbie" id="newbie" hidden><p><b>第一日返工？</b>先做「僱員培訓」，師傅一步步教你帶位、落單、煮嘢、沖奶茶。每學識一個位，老闆獎 <b>$300</b> 俾你裝修！</p>
+      <span><button type="button" id="newbieGo">去培訓</button><button type="button" id="newbieSkip" class="alt">我識玩，跳過</button></span></div>
+    <div class="firstcard" id="firstCard" hidden>
+      <p class="fk">第一日返工</p>
+      <p class="fl">間舖等緊你。企面落單、廚房炒餸、水吧沖奶茶、收銀找錢，你都做得。</p>
+      <button type="button" class="big" id="firstGo">開工！跟師傅學一次</button>
+      <button type="button" class="linkbtn" id="firstSkip">我識玩，直接去第一關</button>
+      <p class="fh">學完老闆有利是，自己間舖、關卡、組隊會慢慢開放。</p>
+    </div>
+    <div class="me" id="me"></div>
+    <div class="career" id="career"></div>
+    <div class="modes">
+      <button type="button" id="shopBtn" class="main"><b id="shopName">我的茶餐廳</b><span>揀位、揀更，賺錢裝修擴舖</span></button>
+      <button type="button" id="levelBtn"><b>關卡</b><span>固定間舖攞星</span></button>
+      <button type="button" id="coopBtn"><b>組隊</b><span>同朋友一齊開舖</span></button>
+      <button type="button" id="tutBtn"><b>僱員培訓</b><span id="tutSub">每個位學識獎 $300</span></button>
+    </div>
+    <section class="shift" aria-label="開工">
+      <div class="shift-h"><button type="button" id="homeBack">‹ 返回</button><b id="shopName2">我的茶餐廳</b><button type="button" id="shopRename">改舖名</button></div>
+      <form class="rename" id="shopForm" hidden><input id="shopIn" maxlength="10" placeholder="例如：大大茶餐廳" aria-label="舖名"><button type="submit">好</button></form>
+      <div id="mortBox"></div>
+      <p class="diffh">做邊個位？</p>
+      <div class="diff compact four" id="stSeg" role="group" aria-label="崗位"></div>
+      <p class="diffh">返邊更？</p>
+      <div class="diff compact" id="slotSeg" role="group" aria-label="時段"></div>
+      <p class="diffh">級數</p>
+      <div class="diff compact" id="diffSeg" role="group" aria-label="難度"></div>
+      <div id="targetBox">
+        <p class="diffh" id="soloH">做法</p>
+        <div class="diff compact" id="soloSeg" role="group" aria-label="做法"></div>
+        <p class="diffh">老闆目標 <small id="tgLine"></small></p>
+        <div class="diff compact four" id="tgMetric" role="group" aria-label="目標"></div>
+        <div class="diff compact" id="tgTier" role="group" aria-label="賭注"></div>
+        <div id="pressBox"></div>
+      </div>
+      <button class="big" id="startBtn" type="button">開工</button>
+      <div class="minis inshop">
+        <button type="button" id="decorBtn">裝修</button>
+        <button type="button" id="estateBtn">地產舖</button>
+        <button type="button" id="recipeBtn">食譜</button>
+        <button type="button" id="bookBtn">熟客簿</button>
+        <button type="button" id="dexBtn">茶餐廳圖鑑</button>
+      </div>
+    </section>
+    <div class="minis">
+      <button type="button" id="helpBtn">說明</button>
+    </div>
+    <div class="acct" id="acct" hidden></div>
+    <p class="foot">每更兩個鐘，壓縮成三分鐘。做錯嘢會少收錢，等太耐啲客會嬲走。<br><span class="kicker">伙記、廚房、水吧、收銀 · 原型 v1.33</span></p>
+  </div>
+</div>
+
+<div class="overlay" id="helpView" hidden>
+  <div class="card help" role="dialog" aria-label="說明">
+    <div class="sh-head"><b>說明</b><span>點樣做每個位</span></div>
+    <div class="diff helptabs" id="helpTabs" role="group" aria-label="揀崗位"></div>
+    <dl class="howto" id="howWaiter">
+      <dt>帶位</dt><dd>撳門口啲客，再撳張枱。卡位坐四個，細枱坐兩個，唔夠枱就搭枱（情侶唔搭）。</dd>
+      <dt>落單</dt><dd>枱上閃「落單！」就撳張枱，聽一樣寫一樣：先撳嘢食飲品，再撳走青、凍、少甜。冇講「凍」就係熱；熟客講「照舊」就跟佢上次。</dd>
+      <dt>泡泡</dt><dd>客人頭頂個字話你知要做乜：紅「落」要落單，「執」撳張枱執咗先坐到人。</dd>
+      <dt>早市</dt><dd>揀餐，再揀粉麵、蛋、包。冇講就係通粉、煎蛋、牛油多士。</dd>
+      <dt>晚市</dt><dd>走青唔要蔥，加底飯雙份，炒底飯同餸一齊炒。</dd>
+    </dl>
+    <dl class="howto" id="howBar">
+      <dt>茶壺</dt><dd>開舖前撳茶膽煲茶，煲完撳佢撞茶。冇茶就要再煲，睇準時間。</dd>
+      <dt>睇飛</dt><dd>撳飛上面一杯，揀做嗰杯。沖錯客人會拎返嚟，張飛寫「換」，要沖過。</dd>
+      <dt>沖</dt><dd>揀熱杯或凍杯，落料，撳「出」。熱飲唔落糖；凍飲落冰同糖水，走冰、少甜、走甜跟住改。</dd>
+    </dl>
+    <dl class="howto" id="howKit">
+      <dt>睇飛</dt><dd>黃色嗰碟係而家做緊嘅（自動揀最趕嗰碟），想先做另一碟就撳佢。</dd>
+      <dt>開火</dt><dd>撳黃色嘅粉麵、蛋、多士開始計時；粉紅色嘅料撳就放上碟。</dd>
+      <dt>上碟</dt><dd>爐具寫「得」就撳佢攞上碟。麵會自動撈起，可以煲定；蛋同多士遲咗會燶。晚市啲飯要撳個鑊炒幾下。</dd>
+      <dt>出餐</dt><dd>齊料撳「出餐」。整錯客人會退返嚟。唔記得撳「做法」。</dd>
+    </dl>
+    <dl class="howto" id="howTill">
+      <dt>計數</dt><dd>計總數，撳數字再撳「收」；可以用「＋」逐樣加。凍飲加三蚊，烘底、轉公仔麵、加底都加錢。</dd>
+      <dt>找錢</dt><dd>撳錢箱啲錢找返畀客，再撳「找錢」。八達通就打啱數撳「拍卡」。</dd>
+      <dt>執手尾</dt><dd>客人話冇叫嗰樣，撳嗰行劃走，唔好收佢錢。</dd>
+      <dt>跟餐</dt><dd>每個餐跟一杯飲品；多出嚟嘅飲品係單叫，收全價。</dd>
+    </dl>
+    <dl class="howto" id="howRunner" hidden>
+      <dt>揀單</dt><dd>出餐口有嘢就撳 1、2 或 3，揀今轉拎幾多張枱嘅嘢。拎得多分數多，但托盤重啲難控制。</dd>
+      <dt>碌</dt><dd>斜部電話（或者用手指拖）碌伙記：斜向邊就碌去邊，要預早收斜度先停得低。</dd>
+      <dt>上菜</dt><dd>碌去閃黃燈嗰張枱，慢慢碌入枱前面個洞 = 上菜。綠點夠慢，紅點太快。</dd>
+      <dt>體力</dt><dd>撞枱撞客都扣體力，冇晒就撞暈，由出餐口重新嚟過。地下藍色水跡好滑。</dd>
+    </dl>
+    <dl class="howto" id="howRoast" hidden>
+      <dt>揀底</dt><dd>白飯用碟；瀨粉、米粉、河粉用碗，由湯煲拖一殼湯落碗再撳蔥花。</dd>
+      <dt>斬料</dt><dd>將張飛寫嗰款燒味由鐵通拖落砧板。張飛要幾多件，就斬幾多刀：數字 1、2、3… 企喺虛線上面，一條線一刀。叉燒手指由上面沿虛線𠝹落；其他撳虛線斬（撳實撳耐都得，次序隨你）。燒鴨、油雞嘅虛線就係骨位，斬歪咗骨會碎。斬喺線上件件一樣闊；越難，虛線越短、件數越多。</dd>
+      <dt>上碟</dt><dd>有數字嗰幾件拖去碟／碗；白飯撳住豉油樽淋到綠色格。張飛有寫先加薑葱、油菜。</dd>
+      <dt>出餐</dt><dd>喺碟／碗向上掃出餐；向下掃 = 倒咗重做。</dd>
+    </dl>
+    <dl class="howto" id="howTake" hidden>
+      <dt>照單執</dt><dd>櫃面啲嘢整好就睇清楚貼紙號碼拖入袋：飯盒平放落底，飲品擺面。</dd>
+      <dt>加嘢</dt><dd>撳下面啲盤加餐具、紙巾、飲管、糖包；數到啱會變灰，多咗變紅。撳「↶」退返一樣。</dd>
+      <dt>綁袋</dt><dd>由「起」嗰點撳住，跟住條虛線畫；發光嗰段係下一段，快啲畫貼士多。</dd>
+      <dt>交袋</dt><dd>將個袋拖俾門口啱號碼嗰位（外賣仔或者自取嘅客）。</dd>
+    </dl>
+    <dl class="howto" id="howAll">
+      <dt>星星</dt><dd>嬲走唔多過三個一粒星；做到老闆目標兩粒；出錯同嬲走都唔多過一次三粒。每粒星獎 $100。</dd>
+      <dt>老闆目標</dt><dd>開工前自己揀目標同賭注：穩陣做唔到冇蝕；搏一搏、搏盡做到賺多好多，做唔到要蝕錢。</dd>
+      <dt>做法</dt><dd>一個位；輪流做（每 45 秒轉位）；一腳踢（自己撳上面轉位，電腦頂住其餘）。</dd>
+      <dt>關卡</dt><dd>淨係睇營業額，三條線三粒星；攞一粒星開下一關。</dd>
+      <dt>供舖</dt><dd>舖係租嘅，每更交 8% 租。有錢就喺「我的茶餐廳」撳「供一期」，供滿 12 期就係業主，唔使交租。</dd>
+      <dt>硬核</dt><dd>自己揀開：每更交定額租、人工、雜費。連續蝕本有業主信；欠租再蝕業主收舖，搬細舖重新嚟過，星同食譜保留。</dd>
+      <dt>升職</dt><dd>儲星升職：學師、新人、熟手、阿姐、老闆，逐級解鎖難度同新嘢。</dd>
+    </dl>
+<button type="button" class="big" id="helpClose">返回</button>
+  </div>
+</div>
+
+<div class="overlay" id="coopView" hidden><div class="card coop" id="coop" role="dialog" aria-label="組隊"></div></div>
+
+<div class="overlay" id="bookView" hidden><div class="card book" id="book" role="dialog" aria-label="熟客簿"></div></div>
+
+<div class="overlay" id="pauseView" hidden>
+  <div class="card" style="padding-top:14vh">
+    <p class="sign" style="align-self:center">食緊煙</p>
+    <canvas id="smokeCv" class="smokecv" width="120" height="72" aria-label="伙記仔喺茶記角落食緊煙抖氣"></canvas>
+    <p class="smokeline" id="smokeLine"></p>
+    <p class="pgoal" id="pauseGoal"></p>
+    <button class="big" id="resumeBtn" type="button">返工</button>
+    <button class="big alt soundBtn" type="button">聲：開</button>
+    <button class="big alt musicBtn" type="button">音樂：開</button>
+    <button class="big alt" id="quitBtn" type="button">唔做喇，返去頭先</button>
+  </div>
+</div>
+
+<div class="overlay" id="introView" hidden>
+  <div class="card intro" role="dialog" aria-labelledby="introGoal">
+    <p class="kicker" id="introKick">老闆目標</p>
+    <h2 class="sign" id="introGoal"></h2>
+    <p class="istake" id="introStake"></p>
+    <p class="ihow" id="introHow"></p>
+    <p class="inote">撳「開工！」個鐘先開始行</p>
+    <button class="big" id="introGo" type="button">開工！</button>
+    <button class="big alt" id="introBack" type="button">改目標</button>
+  </div>
+</div>
+
+<div class="overlay" id="endView" hidden>
+  <div class="card">
+    <p class="kicker" id="endKick">二點正 · 午市完</p>
+    <h2 class="sign" id="endSign">收工</h2>
+    <div class="result" id="result"></div>
+    <p class="boss" id="boss"></p>
+    <button class="big" id="nextBtn" type="button">做埋晚市</button>
+    <button class="big alt" id="againBtn" type="button">再做一次</button>
+    <button class="big share" id="shareBtn" type="button">出成績卡（分享）</button>
+    <button class="big alt" id="endDecorBtn" type="button">用積蓄裝修</button>
+    <button class="big alt" id="homeBtn" type="button">返主頁</button>
+  </div>
+</div>
+
+<script src="js/app.js?v=1.33"></script>
+<script>
+// 加到主畫面、離線玩：只喺正式網址同本機開
+if ('serviceWorker' in navigator && (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) || location.protocol==='https:')) navigator.serviceWorker.register('sw.js', { updateViaCache:'none' }).then(r => r.update()).catch(() => {});
+</script>
+</body>
+</html>

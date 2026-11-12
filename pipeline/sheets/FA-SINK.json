@@ -1,0 +1,99 @@
+{
+ "id": "FA-SINK",
+ "size": [
+  1536,
+  1024
+ ],
+ "kind": "things",
+ "what": "piece of cha chaan teng dishwashing equipment",
+ "camera": "iso",
+ "scale": "One scale for all, the same as the board's counters (the prep counter there is about 1.5 m long and waist-high). ",
+ "board": [
+  [
+   "R-KITCHEN",
+   "prep_counter"
+  ],
+  [
+   "R-KITCHEN",
+   "pass"
+  ],
+  [
+   "R-BAR-TA",
+   "cups"
+  ],
+  [
+   "R-DECOR",
+   "crates"
+  ],
+  [
+   "R-DECOR",
+   "mop_bucket"
+  ],
+  [
+   "R-KITCHEN",
+   "stock_pot"
+  ]
+ ],
+ "items": [
+  {
+   "name": "sink",
+   "zh": "雙盆不鏽鋼洗碗盆",
+   "look": "a double-basin stainless steel sink unit about 1.6 m long and waist-high with a drainboard at one end, a tall gooseneck tap and a spray hose on a spring arm, a steel undershelf below; its long front faces down-left",
+   "cell": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  },
+  {
+   "name": "dish_rack",
+   "zh": "不鏽鋼碗碟架",
+   "look": "a free-standing stainless steel rack shelf about 1 m long and 1.6 m tall, its shelves stacked with clean white plates, bowls and cups; its long front faces down-left",
+   "cell": [
+    2,
+    0,
+    2,
+    0
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  },
+  {
+   "name": "bus_trolley",
+   "zh": "收碗車仔",
+   "look": "a small two-tier steel trolley on castors carrying a grey plastic bus tub full of dirty plates, bowls and cups with a few chopsticks; its long side faces down-left",
+   "cell": [
+    0,
+    1,
+    0,
+    1
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  },
+  {
+   "name": "crate_stack",
+   "zh": "藍色膠碗籃",
+   "look": "a stack of two blue plastic dish crates, the top one holding clean white bowls, on the floor; long sides facing down-left",
+   "cell": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "grid": [
+    512,
+    512
+   ]
+  }
+ ]
+}

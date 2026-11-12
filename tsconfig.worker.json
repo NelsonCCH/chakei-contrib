@@ -1,0 +1,22 @@
+{
+  // The Worker (worker/index.ts -> worker/index.js, scripts/build.mjs; wrangler bundles the .js). An ES module typed
+  // against the Workers runtime: worker/worker-configuration.d.ts is `wrangler types` output for our compatibility
+  // date (npm run types:worker regenerates it). Same strictness as tsconfig.json.
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022"],
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    "types": [],
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["worker/index.ts", "worker/room-core.d.ts", "worker/worker-configuration.d.ts"]
+}

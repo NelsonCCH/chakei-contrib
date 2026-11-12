@@ -1,0 +1,8 @@
+# Python 3.11+. Versions the shipped atlas was exported with: numpy 2.4, scipy 1.17, Pillow 12.1, OpenCV 5.0.
+# Other versions work; Lanczos and Hough results may then differ by a level or a pixel from the shipped atlas.
+numpy>=2.0
+scipy>=1.13
+pillow>=10.1
+opencv-python-headless>=4.9
+requests>=2.31
+pytest>=8

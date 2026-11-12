@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#235648">
+<meta name="robots" content="noindex">
+<title>外賣 · 手感測試</title>
+<!-- The 外賣 station on its own (src/stations-next/takeaway), ported 1:1 from the original prototype, for
+     playing it alone on a phone. Script: takeaway.js, built by scripts/build.mjs from src/stations-next/takeaway/page.ts. -->
+<style>
+:root{
+  --wall:#235648; --wall-hi:#2f6b5a; --paper:#fbfaf1; --ink:#1c2924; --mute:#58695f;
+  --red:#c8323c; --amber:#cf861a; --ok:#2a8b67; --cream:#f4efd9;
+  --body:"PingFang HK","Noto Sans HK","Microsoft JhengHei",system-ui,sans-serif;
+  color-scheme:light;
+}
+html,body{margin:0;height:100%;background:var(--wall);color:var(--ink);font-family:var(--body);overflow:hidden;overscroll-behavior:none;
+  touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+body{position:fixed;inset:0}
+button{font:inherit;color:inherit;touch-action:manipulation}
+#app{position:relative;margin:0 auto;max-width:480px;height:100%;display:flex;flex-direction:column;background:#a9cbbd;overflow:hidden}
+#hud{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:calc(env(safe-area-inset-top,0px) + 6px) 10px 6px;background:var(--wall);color:var(--cream);min-height:40px;box-sizing:border-box}
+#hud .t{font-weight:900;font-size:16px;white-space:nowrap}
+#hud .s{flex:1;min-width:0;font-size:13px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}
+.hb{border:2px solid #0f1a16;background:var(--wall-hi);color:var(--cream);border-radius:8px;padding:4px 8px;font-size:13px;font-weight:700;min-width:36px}
+.hb.on{background:var(--cream);color:var(--ink)}
+#prog{flex:0 0 6px;background:#173f34;position:relative}
+#prog i{position:absolute;left:0;top:0;bottom:0;background:#ffd25a;width:0}
+.scene{position:relative;overflow:hidden;flex:1 1 0}
+#foot{flex:0 0 auto;height:env(safe-area-inset-bottom,0px);background:#8d99a1}
+.scene canvas{position:absolute;left:0;top:0}
+.pxl{image-rendering:pixelated;image-rendering:crisp-edges}
+.shake{animation:sh .25s linear}
+@keyframes sh{0%,100%{transform:none}25%{transform:translate(-4px,2px)}50%{transform:translate(4px,-2px)}75%{transform:translate(-2px,-1px)}}
+.ov{position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;background:rgba(15,26,22,.55)}
+.ov[hidden]{display:none}
+.card{background:var(--paper);border:3px solid #0f1a16;border-radius:14px;box-shadow:0 6px 0 #0f1a16;padding:16px;max-width:420px;width:100%;max-height:100%;overflow:auto;box-sizing:border-box}
+.card h1{margin:0 0 6px;font-size:24px;font-weight:900}
+.card h2{margin:0 0 6px;font-size:22px;font-weight:900}
+.card p{margin:6px 0;font-size:15px;line-height:1.45}
+.card .mute{color:var(--mute);font-size:13px}
+.big{display:block;width:100%;margin:10px 0 6px;padding:16px 10px;border:3px solid #0f1a16;border-radius:14px;background:#ffd25a;font-size:20px;font-weight:900;box-shadow:0 4px 0 #0f1a16}
+.big.alt{background:var(--cream);font-size:16px;padding:12px 10px}
+.row{display:flex;align-items:center;gap:6px;margin:8px 0;font-size:14px}
+.row b{width:44px;flex:0 0 auto}
+.seg{display:flex;gap:4px;flex:1}
+.seg button{flex:1;border:2px solid #0f1a16;border-radius:8px;background:#fff;padding:7px 2px;font-size:14px;font-weight:700}
+.seg button.on{background:var(--wall);color:var(--cream)}
+.stat{font-size:17px;font-weight:700;line-height:1.6}
+.stars{margin:2px 0;font-size:34px;line-height:1;color:#e8a21a;letter-spacing:4px;-webkit-text-stroke:1.5px #0f1a16}
+.stars span{color:#d8ddd6}
+.quote{margin:6px 0;padding:6px 10px;background:#fff6c8;border:2px solid #0f1a16;border-radius:10px;font-size:15px;font-weight:700;line-height:1.5}
+#dbg{position:absolute;left:4px;bottom:4px;z-index:5;margin:0;padding:4px 6px;background:rgba(15,26,22,.8);color:#bfe3c8;font:11px/1.35 ui-monospace,Menlo,Consolas,monospace;border-radius:6px;pointer-events:none;white-space:pre}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hud"><span class="t">外賣</span><span class="s" id="hs">手感測試</span>
+    <button class="hb" id="bSnd">聲 關</button><button class="hb" id="bDbg">數</button><button class="hb" id="bMenu">≡</button></div>
+  <div id="prog"><i id="progI"></i></div>
+  <div class="scene" id="sc"><canvas class="pxl"></canvas><canvas class="txl"></canvas><pre id="dbg" hidden></pre></div>
+  <div id="foot"></div>
+
+  <div class="ov" id="ovStart"><div class="card">
+    <h1>外賣 · 手感測試</h1>
+    <p>張單喺上面條軌度，<b>照單執</b>：左邊係要入袋嘅嘢，右邊寫明餐具、紙巾、飲管、糖包、糖漿各要幾多。廚房同水吧整好啲嘢就擺上枱，<b>睇清楚貼紙個號碼</b>，拖入袋。單底會寫「先放飯盒，飲品擺面」：飯盒平放落底先，飲品同菠蘿油擺最面，掉轉會壓瀉。</p>
+    <p>再撳下面啲盤加嘢，單上數到啱嘅就會變灰，畀多咗會變紅。撳袋口個「↶」可以退返一樣。</p>
+    <p>最後<b>綁袋</b>：每次個結都唔同（閃電、龍捲風、魔法陣、草書、亂線頭……）。由「起」嗰點撳住，跟住條虛線畫，畫過嘅虛線會消失。發光嗰段先係下一段，條線兜過自己都唔使驚。畫得快過標準時間貼士多；甩咗線要返去發光嗰點接住畫，放手都唔會由頭嚟。</p>
+    <p>綁好就將個袋拖俾門口<b>啱號碼</b>嗰位（外賣仔或者自取嘅客）。</p>
+    <p class="mute">一更兩分半。新人個結簡單，交袋有箭咀指路；熟手、阿姐個結長啲、兜多啲。</p>
+    <div class="row"><b>難度</b><div class="seg" id="segDiff"><button data-v="rookie">新人</button><button data-v="pro">熟手</button><button data-v="ace">阿姐</button></div></div>
+    <button class="big" id="bGo">開工</button>
+    <button class="big alt" id="bDrill">淨係練綁袋</button>
+  </div></div>
+  <div class="ov" id="ovCard" hidden><div class="card" id="cardBody"></div></div>
+</div>
+<script src="takeaway.js"></script>
+</body>
+</html>

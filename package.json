@@ -1,0 +1,29 @@
+{
+  "name": "chakei",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build && wrangler dev --port 8787",
+    "db:local": "wrangler d1 migrations apply chakei --local",
+    "db:remote": "wrangler d1 migrations apply chakei --remote",
+    "build": "node scripts/build.mjs",
+    "build:prod": "node scripts/build.mjs --prod",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.core.json && tsc -p tsconfig.worker.json && tsc -p tsconfig.sw.json",
+    "types:worker": "wrangler types worker/worker-configuration.d.ts --include-env=false",
+    "lint": "eslint .",
+    "sim": "node --test tests/sim/*.test.js",
+    "check": "npm run typecheck && npm run lint && npm run build",
+    "pretest": "npm run build",
+    "test": "node scripts/run-tests.mjs",
+    "deploy": "npm run check && npm run build:prod && wrangler deploy"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.14.0",
+    "playwright": "^1.56.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2",
+    "wrangler": "^4.40.0"
+  }
+}
